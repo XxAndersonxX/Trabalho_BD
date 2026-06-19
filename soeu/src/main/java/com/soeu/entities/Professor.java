@@ -1,15 +1,25 @@
-package Trabalho_BD.entities;
+package com.soeu.entities;
 
 public class Professor {
+
+    private Integer idProfessor;
     private String email;
     private String telefone;
 
-    public Professor(){
+    public Professor() {
     }
 
     public Professor(String email, String telefone) {
         this.email = email;
         this.telefone = telefone;
+    }
+
+    public Integer getIdProfessor() {
+        return idProfessor;
+    }
+
+    public void setIdProfessor(Integer idProfessor) {
+        this.idProfessor = idProfessor;
     }
 
     public String getEmail() {
@@ -30,6 +40,10 @@ public class Professor {
 
     @Override
     public String toString() {
-        return "Professor [email=" + email + ", telefone=" + telefone + "]";
+        return "Professor{" +
+                "idProfessor=" + idProfessor +
+                ", email='" + email + '\'' +
+                ", telefone='" + telefone + '\'' +
+                '}';
     }
 }
