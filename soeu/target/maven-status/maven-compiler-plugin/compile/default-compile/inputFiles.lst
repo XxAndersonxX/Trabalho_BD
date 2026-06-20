@@ -1,0 +1,17 @@
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/entities/Participa.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/entities/HorarioEstudo.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/entities/Turma.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/entities/GrupoEstudo.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/util/DbException.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/entities/Matricula.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/entities/Professor.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/App.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/entities/MetasEstudo.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/entities/Tem.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/entities/Notificacoes.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/entities/Tarefa.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/entities/Aluno.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/entities/Disciplina.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/entities/Prova.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/entities/Material.java
+/home/daniel-alves/Daniel/Banco de Dados/Projeto_BD/Trabalho_BD/soeu/src/main/java/com/soeu/util/DatabaseConnector.java

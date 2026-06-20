@@ -1,0 +1,17 @@
+com/soeu/entities/Disciplina.class
+com/soeu/entities/Tem.class
+com/soeu/entities/HorarioEstudo.class
+com/soeu/util/DatabaseConnector.class
+com/soeu/entities/Turma.class
+com/soeu/entities/Prova.class
+com/soeu/entities/Notificacoes.class
+com/soeu/entities/Participa.class
+com/soeu/entities/Professor.class
+com/soeu/util/DbException.class
+com/soeu/entities/GrupoEstudo.class
+com/soeu/entities/MetasEstudo.class
+com/soeu/entities/Tarefa.class
+com/soeu/entities/Aluno.class
+com/soeu/entities/Matricula.class
+com/soeu/App.class
+com/soeu/entities/Material.class
