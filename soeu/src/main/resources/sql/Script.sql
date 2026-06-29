@@ -1,4 +1,3 @@
-
 CREATE TABLE Disciplina (
     codigo INTEGER AUTO_INCREMENT PRIMARY KEY,
     creditos INTEGER,
@@ -41,6 +40,7 @@ CREATE TABLE Material (
     
     FOREIGN KEY (codigo_FK)
         REFERENCES Disciplina(codigo)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE Turma (
@@ -51,10 +51,12 @@ CREATE TABLE Turma (
     id_professor_FK INTEGER,
     
     FOREIGN KEY (codigo_FK)
-        REFERENCES Disciplina(codigo),
+        REFERENCES Disciplina(codigo)
+        ON DELETE CASCADE,
         
     FOREIGN KEY (id_professor_FK)
         REFERENCES Professor(id_professor)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE Notificacoes (
@@ -66,6 +68,7 @@ CREATE TABLE Notificacoes (
     
     FOREIGN KEY (matricula_FK)
         REFERENCES Aluno(matricula)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE Tarefa (
@@ -76,6 +79,7 @@ CREATE TABLE Tarefa (
     
     FOREIGN KEY (matricula_FK)
         REFERENCES Aluno(matricula)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE Horario_Estudo (
@@ -86,6 +90,7 @@ CREATE TABLE Horario_Estudo (
     
     FOREIGN KEY (id_grupo_FK)
         REFERENCES Grupo_Estudo(id_grupo)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE Metas_Estudo (
@@ -96,6 +101,7 @@ CREATE TABLE Metas_Estudo (
     
     FOREIGN KEY (id_grupo_FK)
         REFERENCES Grupo_Estudo(id_grupo)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE Tem (
@@ -104,10 +110,12 @@ CREATE TABLE Tem (
     PRIMARY KEY (id_turma, id_prova),
     
     FOREIGN KEY (id_turma)
-        REFERENCES Turma(id_turma),
+        REFERENCES Turma(id_turma)
+        ON DELETE CASCADE,
         
     FOREIGN KEY (id_prova)
         REFERENCES Prova(id_prova)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE Matricula (
@@ -116,10 +124,12 @@ CREATE TABLE Matricula (
     PRIMARY KEY (id_turma, matricula),
     
     FOREIGN KEY (id_turma)
-        REFERENCES Turma(id_turma),
+        REFERENCES Turma(id_turma)
+        ON DELETE CASCADE,
         
     FOREIGN KEY (matricula)
         REFERENCES Aluno(matricula)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE Participa (
@@ -128,8 +138,10 @@ CREATE TABLE Participa (
     PRIMARY KEY (matricula, id_grupo),
     
     FOREIGN KEY (matricula)
-        REFERENCES Aluno(matricula),
+        REFERENCES Aluno(matricula)
+        ON DELETE CASCADE,
         
     FOREIGN KEY (id_grupo)
         REFERENCES Grupo_Estudo(id_grupo)
+        ON DELETE CASCADE
 );
