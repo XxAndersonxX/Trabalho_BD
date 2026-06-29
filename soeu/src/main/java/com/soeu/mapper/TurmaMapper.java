@@ -8,7 +8,7 @@ import com.soeu.entities.Turma;
 public class TurmaMapper {
     public static Turma createTurma(ResultSet rs) throws SQLException{
         Turma turma = new Turma();
-        turma.setIdTurma(rs.getInt("idTurma"));
+        turma.setIdTurma(rs.getInt("id_Turma"));
         turma.setSemestre(rs.getInt("semestre"));
         turma.setHorario(rs.getTime("horario").toLocalTime());
 
