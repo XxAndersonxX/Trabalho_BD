@@ -158,44 +158,31 @@ public class AlunoDAO implements EntityDAO<Aluno>{
         }
     }
     
-    public Aluno autenticar(String email, String senha) {
+    public Aluno findByEmail(String email) {
+        PreparedStatement declaracao = null;
+        ResultSet resultado = null;
 
-    PreparedStatement declaracao = null;
-    ResultSet resultado = null;
-
-    try {
-
-        declaracao = conn.prepareStatement(
-            "SELECT * FROM Aluno WHERE email = ?"
-        );
-
-        declaracao.setString(1, email);
-
-        resultado = declaracao.executeQuery();
-
-        if (!resultado.next()) {
-            throw new RuntimeException(
-                "Usuário não encontrado"
+        try {
+            declaracao = conn.prepareStatement(
+                "SELECT * FROM Aluno WHERE email = ?"
             );
+
+            declaracao.setString(1, email);
+
+            resultado = declaracao.executeQuery();
+
+            if (resultado.next()) {
+                Aluno aluno = AlunoMapper.createAluno(resultado); 
+                return aluno;            
+            }
+
+            return null;
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(resultado);
+            DB.closeStatement(declaracao);
         }
-
-        Aluno aluno = AlunoMapper.createAluno(resultado);
-
-        if (!aluno.getSenha().equals(senha)) {
-            throw new RuntimeException(
-                "Senha incorreta"
-            );
-        }
-
-        return aluno;
-
-    } catch (SQLException e) {
-        throw new DbException(e.getMessage());
-
-    } finally {
-        DB.closeResultSet(resultado);
-        DB.closeStatement(declaracao);
     }
-}
     
 }
