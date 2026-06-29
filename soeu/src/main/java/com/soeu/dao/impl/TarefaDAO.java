@@ -32,7 +32,7 @@ public class TarefaDAO implements EntityDAO<Tarefa>{
 
         try {
             ps = conn.prepareStatement(
-                "INSERT INTO tarefa " +
+                "INSERT INTO Tarefa " +
                 "(prazo, status, matricula_FK) " +
                 "VALUES " +
                 "(?, ?, ?)",
