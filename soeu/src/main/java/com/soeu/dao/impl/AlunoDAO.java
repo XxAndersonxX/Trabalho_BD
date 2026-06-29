@@ -134,27 +134,68 @@ public class AlunoDAO implements EntityDAO<Aluno>{
 
     @Override
     public List<Aluno> findAll() {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
+        PreparedStatement declara = null;
+        ResultSet resultadoSet = null;
 
         try {
-            ps = conn.prepareStatement(
+            declara = conn.prepareStatement(
                 "SELECT * " +
                 "FROM Aluno"
             );
-            rs = ps.executeQuery();
+            resultadoSet = declara.executeQuery();
 
             List<Aluno> alunos = new ArrayList<>();
-            while(rs.next()){
-                Aluno aluno = AlunoMapper.createAluno(rs);
+            while(resultadoSet.next()){
+                Aluno aluno = AlunoMapper.createAluno(resultadoSet);
                 alunos.add(aluno);
             }
             return alunos;
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }finally{
-            DB.closeResultSet(rs);
-            DB.closeStatement(ps);
+            DB.closeResultSet(resultadoSet);
+            DB.closeStatement(declara);
         }
     }
+    
+    public Aluno autenticar(String email, String senha) {
+
+    PreparedStatement declaracao = null;
+    ResultSet resultado = null;
+
+    try {
+
+        declaracao = conn.prepareStatement(
+            "SELECT * FROM Aluno WHERE email = ?"
+        );
+
+        declaracao.setString(1, email);
+
+        resultado = declaracao.executeQuery();
+
+        if (!resultado.next()) {
+            throw new RuntimeException(
+                "Usuário não encontrado"
+            );
+        }
+
+        Aluno aluno = AlunoMapper.createAluno(resultado);
+
+        if (!aluno.getSenha().equals(senha)) {
+            throw new RuntimeException(
+                "Senha incorreta"
+            );
+        }
+
+        return aluno;
+
+    } catch (SQLException e) {
+        throw new DbException(e.getMessage());
+
+    } finally {
+        DB.closeResultSet(resultado);
+        DB.closeStatement(declaracao);
+    }
+}
+    
 }
