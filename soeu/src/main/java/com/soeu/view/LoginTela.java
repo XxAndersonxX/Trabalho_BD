@@ -4,6 +4,9 @@
  */
 package com.soeu.view;
 
+import com.soeu.entities.Aluno;
+import com.soeu.services.AutenticacaoService;
+
 /**
  *
  * @author Anderson
@@ -97,11 +100,8 @@ public class LoginTela extends javax.swing.JFrame {
     }
 
     try {
-        com.soeu.dao.impl.AlunoDAO alunoDAO =
-                new com.soeu.dao.impl.AlunoDAO(com.soeu.util.DB.getMySQLConnection());
-
-        com.soeu.entities.Aluno aluno =
-                alunoDAO.autenticar(email, senha);
+        AutenticacaoService authService = new AutenticacaoService();
+        Aluno aluno = authService.autenticar(email, senha);
 
         javax.swing.JOptionPane.showMessageDialog(this, "Login realizado com sucesso!");
 
