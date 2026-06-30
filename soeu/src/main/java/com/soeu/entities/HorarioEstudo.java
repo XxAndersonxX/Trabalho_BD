@@ -3,7 +3,7 @@ package com.soeu.entities;
 import java.time.LocalTime;
 
 public class HorarioEstudo {
-
+    
     private Integer idHorario;
     private LocalTime horaInicio;
     private LocalTime horaFim;
@@ -53,10 +53,10 @@ public class HorarioEstudo {
 
     @Override
     public String toString() {
-        return "HorarioEstudo{" +
-                "idHorario=" + idHorario +
-                ", horaInicio=" + horaInicio +
-                ", horaFim=" + horaFim +
-                '}';
+        return """
+               HorarioEstudo
+               idHorario: """ + idHorario +
+                "\nhoraInicio: " + horaInicio +
+                "\nhoraFim: " + horaFim;
     }
 }
