@@ -5,27 +5,32 @@ import java.util.List;
 import com.soeu.dao.factory.DaoFactory;
 import com.soeu.dao.impl.HorarioEstudoDAO;
 import com.soeu.entities.HorarioEstudo;
+import com.soeu.services.interfaces.Service;
 
-public class HorarioService {
+public class HorarioService implements Service<HorarioEstudo>{
     private final HorarioEstudoDAO horaDAO;
 
     public HorarioService(){
         this.horaDAO = DaoFactory.createHorarioEstudoDAO();
     }
-    
-    public void createHorario(HorarioEstudo horario){
+
+    @Override
+    public void create(HorarioEstudo horario) {
         horaDAO.insert(horario);
     }
 
-    public List<HorarioEstudo> readHorario(){
+    @Override
+    public List<HorarioEstudo> read() {
         return horaDAO.findAll();
     }
 
-    public void updateHorario(HorarioEstudo horario){
+    @Override
+    public void update(HorarioEstudo horario) {
         horaDAO.update(horario);
     }
 
-    public void deleteHorario(HorarioEstudo horario){
+    @Override
+    public void delete(HorarioEstudo horario) {
         horaDAO.deleteById(horario.getIdHorario());
     }
 }
