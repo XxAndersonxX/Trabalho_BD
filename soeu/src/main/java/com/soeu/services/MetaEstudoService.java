@@ -20,8 +20,8 @@ public class MetaEstudoService implements Service<MetasEstudo>{
     }
 
     @Override
-    public List<MetasEstudo> read() {
-        return metaDAO.findAll();
+    public List<MetasEstudo> read(Integer id) {
+        return metaDAO.findAllById(id);
     }
 
     @Override

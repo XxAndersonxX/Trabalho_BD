@@ -20,8 +20,8 @@ public class HorarioService implements Service<HorarioEstudo>{
     }
 
     @Override
-    public List<HorarioEstudo> read() {
-        return horaDAO.findAll();
+    public List<HorarioEstudo> read(Integer id) {
+        return horaDAO.findAllById(id);
     }
 
     @Override
