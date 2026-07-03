@@ -18,7 +18,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
     }
-x   
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -137,10 +137,10 @@ x
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        new LoginTela().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton9ActionPerformed
+    new LoginTela().setVisible(true);
+    this.dispose();     }//GEN-LAST:event_jButton9ActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
