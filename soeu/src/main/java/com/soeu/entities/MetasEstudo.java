@@ -53,10 +53,7 @@ public class MetasEstudo {
 
     @Override
     public String toString() {
-        return "MetasEstudo{" +
-                "idMetas=" + idMetas +
-                ", horaMeta=" + horaMeta +
-                ", metasEstudo='" + metasEstudo + '\'' +
-                '}';
+        return  "Meta: " + metasEstudo + " | " +
+                "Horas de duração: " + horaMeta;
     }
 }

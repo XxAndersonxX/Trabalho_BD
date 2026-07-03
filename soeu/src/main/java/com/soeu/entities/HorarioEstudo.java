@@ -53,10 +53,7 @@ public class HorarioEstudo {
 
     @Override
     public String toString() {
-        return """
-               HorarioEstudo
-               idHorario: """ + idHorario +
-                "\nhoraInicio: " + horaInicio +
-                "\nhoraFim: " + horaFim;
+        return  "Hora que começa: " + horaInicio + " | " +
+                "Hora que termina: " + horaFim;
     }
 }
