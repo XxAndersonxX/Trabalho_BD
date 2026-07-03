@@ -9,10 +9,10 @@ public class GrupoEstudoTela extends javax.swing.JFrame {
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel lblGrupo;
 
-    private GrupoEstudo grupoAtual;
+    private final GrupoEstudo grupoAtual;
 
-    private HorarioEstudoPanel horarioPanel;
-    private MetaEstudoPanel metaPanel;
+    private final HorarioEstudoPanel horarioPanel;
+    private final MetaEstudoPanel metaPanel;
 
     public GrupoEstudoTela(GrupoEstudo grupo) {
 
@@ -20,16 +20,11 @@ public class GrupoEstudoTela extends javax.swing.JFrame {
 
         initComponents();
 
-        horarioPanel =
-            new HorarioEstudoPanel(grupoAtual);
+        horarioPanel = new HorarioEstudoPanel(grupoAtual);
 
-        metaPanel =
-            new MetaEstudoPanel(grupoAtual);
+        metaPanel = new MetaEstudoPanel(grupoAtual);
 
-        lblGrupo.setText(
-            "Grupo: "
-            + grupoAtual.getDescricao()
-        );
+        lblGrupo.setText("Grupo: " + grupoAtual.getDescricao());
     }
 
     private void initComponents() {
@@ -40,21 +35,13 @@ public class GrupoEstudoTela extends javax.swing.JFrame {
         btnHorario = new javax.swing.JButton();
         btnMetas = new javax.swing.JButton();
 
-        setDefaultCloseOperation(
-            javax.swing.WindowConstants.EXIT_ON_CLOSE
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        titulo.setText(
-            "Sistema de Estudos Universitário"
-        );
+        titulo.setText("Sistema de Estudos Universitário");
 
-        btnHorario.setText(
-            "Horário de Estudo"
-        );
+        btnHorario.setText("Horário de Estudo");
 
-        btnMetas.setText(
-            "Metas de Estudo"
-        );
+        btnMetas.setText("Metas de Estudo");
 
         btnHorario.addActionListener(evt -> {
             horarioPanel.abrirMenuHorario();
@@ -64,17 +51,12 @@ public class GrupoEstudoTela extends javax.swing.JFrame {
             metaPanel.abrirMenuMetas();
         });
 
-        javax.swing.GroupLayout layout =
-            new javax.swing.GroupLayout(
-                getContentPane()
-            );
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 
         getContentPane().setLayout(layout);
 
         layout.setHorizontalGroup(
-            layout.createParallelGroup(
-                javax.swing.GroupLayout.Alignment.CENTER
-            )
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
             .addComponent(titulo)
             .addComponent(lblGrupo)
             .addComponent(btnHorario,150,150,150)
