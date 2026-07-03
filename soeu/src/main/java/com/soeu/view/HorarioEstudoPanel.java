@@ -1,5 +1,6 @@
 package com.soeu.view;
 
+import java.awt.HeadlessException;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -67,7 +68,7 @@ public class HorarioEstudoPanel {
 
     private void listarHorarios(){
 
-        List<HorarioEstudo> horarios = horaService.read();
+        List<HorarioEstudo> horarios = horaService.read(grupoAtual.getIdGrupo());
         StringBuilder texto = new StringBuilder();
 
         for(HorarioEstudo h : horarios){
@@ -84,29 +85,41 @@ public class HorarioEstudoPanel {
     }
 
     private void alterarHorario(){
-        JOptionPane.showMessageDialog(null, "Implementar seleção do horário");
+        List<HorarioEstudo> horarios = horaService.read(grupoAtual.getIdGrupo()); 
+        HorarioEstudo[] vetor = horarios.toArray(HorarioEstudo[]::new); 
 
-        String inicio1 = JOptionPane.showInputDialog(this, "Novo horário inicial:");
-        String fim1 = JOptionPane.showInputDialog(this, "Novo horário final:"); 
+        HorarioEstudo horario = (HorarioEstudo) JOptionPane.showInputDialog( 
+                null,
+                "Selecione horário:", 
+                null, 
+                JOptionPane.PLAIN_MESSAGE, 
+                null, 
+                vetor, 
+                vetor[0] 
+            ); 
+
+        String inicio1 = JOptionPane.showInputDialog(null, "Novo horário inicial: ");
+        String fim1 = JOptionPane.showInputDialog(null, "Novo horário final: "); 
         
-        try{ LocalTime horaInicio = LocalTime.parse(inicio1); 
+        try{ 
+            LocalTime horaInicio = LocalTime.parse(inicio1); 
             LocalTime horaFinal = LocalTime.parse(fim1); 
-            HorarioEstudo horario = new HorarioEstudo(horaInicio, horaFinal, grupoAtual); 
+
+            horario.setHoraInicio(horaInicio);
+            horario.setHoraFim(horaFinal);
             
             horaService.update(horario); 
-        }catch(Exception e){ 
+            JOptionPane.showMessageDialog(null, "Horário alterado"); 
+        }catch(HeadlessException e){ 
             JOptionPane.showMessageDialog(null, "Formato de hora inválido. Use HH:mm"); 
         }
     }
 
     private void apagarHorario(){
-        JOptionPane.showMessageDialog(null, "Implementar exclusão");
-
-        List<HorarioEstudo> horariosDel = horaService.read(); 
-        HorarioEstudo[] vetor = horariosDel.toArray(new HorarioEstudo[0]); 
-        HorarioEstudo horarioDel = 
-            (HorarioEstudo) 
-            JOptionPane.showInputDialog( 
+        List<HorarioEstudo> horariosDel = horaService.read(grupoAtual.getIdGrupo()); 
+        HorarioEstudo[] vetor = horariosDel.toArray(HorarioEstudo[]::new); 
+        
+        HorarioEstudo horarioDel = (HorarioEstudo) JOptionPane.showInputDialog( 
                 null,
                 "Selecione horário:", 
                 "Apagar", 
