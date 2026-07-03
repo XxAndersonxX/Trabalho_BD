@@ -26,12 +26,16 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="botaoEntrar" min="-2" max="-2" attributes="0"/>
                   <Component id="lblsenha" min="-2" max="-2" attributes="0"/>
                   <Component id="lblemail" min="-2" max="-2" attributes="0"/>
                   <Component id="titulo" max="32767" attributes="0"/>
                   <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtSenha" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="botaoCadastro" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="botaoEntrar" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="116" max="32767" attributes="0"/>
           </Group>
@@ -51,7 +55,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtSenha" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-              <Component id="botaoEntrar" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="botaoEntrar" min="-2" max="-2" attributes="0"/>
+                  <Component id="botaoCadastro" min="-2" pref="23" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="88" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -87,6 +94,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtSenha">
+    </Component>
+    <Component class="javax.swing.JButton" name="botaoCadastro">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cadastrar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCadastroActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

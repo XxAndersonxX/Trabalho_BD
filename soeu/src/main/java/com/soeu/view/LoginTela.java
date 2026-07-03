@@ -37,6 +37,7 @@ public class LoginTela extends javax.swing.JFrame {
         lblsenha = new javax.swing.JLabel();
         botaoEntrar = new javax.swing.JButton();
         txtSenha = new javax.swing.JPasswordField();
+        botaoCadastro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +52,9 @@ public class LoginTela extends javax.swing.JFrame {
         botaoEntrar.setText("Entrar");
         botaoEntrar.addActionListener(this::botaoEntrarActionPerformed);
 
+        botaoCadastro.setText("Cadastrar");
+        botaoCadastro.addActionListener(this::botaoCadastroActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -58,12 +62,15 @@ public class LoginTela extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(114, 114, 114)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botaoEntrar)
                     .addComponent(lblsenha)
                     .addComponent(lblemail)
                     .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtEmail)
-                    .addComponent(txtSenha))
+                    .addComponent(txtSenha)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(botaoCadastro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botaoEntrar)))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -80,7 +87,9 @@ public class LoginTela extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(botaoEntrar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botaoEntrar)
+                    .addComponent(botaoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
 
@@ -104,6 +113,9 @@ public class LoginTela extends javax.swing.JFrame {
         Aluno aluno = authService.autenticar(email, senha);
 
         javax.swing.JOptionPane.showMessageDialog(this, "Login realizado com sucesso!");
+        
+        new TelaPrincipal().setVisible(true);
+        this.dispose();
 
     } catch (RuntimeException e) {
         javax.swing.JOptionPane.showMessageDialog(this, e.getMessage());
@@ -111,6 +123,12 @@ public class LoginTela extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_botaoEntrarActionPerformed
+
+    private void botaoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastroActionPerformed
+        CadastroAluno telaCadastro = new CadastroAluno();
+        telaCadastro.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoCadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,6 +156,7 @@ public class LoginTela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoCadastro;
     private javax.swing.JButton botaoEntrar;
     private javax.swing.JLabel lblemail;
     private javax.swing.JLabel lblsenha;
