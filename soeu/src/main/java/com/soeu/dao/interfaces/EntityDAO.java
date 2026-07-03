@@ -7,5 +7,5 @@ public interface EntityDAO<T> {
     void update(T obj);
     void deleteById(Integer id);
     T findById(Integer id);
-    List<T> findAll();
+    List<T> findAllById(Integer id);
 }

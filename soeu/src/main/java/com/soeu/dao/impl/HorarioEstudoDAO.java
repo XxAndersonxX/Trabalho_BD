@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.soeu.dao.interfaces.EntityDAO;
 import com.soeu.entities.GrupoEstudo;
@@ -139,7 +137,7 @@ public class HorarioEstudoDAO implements EntityDAO<HorarioEstudo>{
     }
 
     @Override
-    public List<HorarioEstudo> findAll() {
+    public List<HorarioEstudo> findAllById(Integer id) {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -148,27 +146,24 @@ public class HorarioEstudoDAO implements EntityDAO<HorarioEstudo>{
                 "SELECT Horario_Estudo.*, Grupo_Estudo.* " +
                 "FROM Horario_Estudo " +
                 "INNER JOIN Grupo_Estudo " +
-                "ON Horario_Estudo.id_grupo_FK = Grupo_Estudo.id_grupo "
+                "ON Horario_Estudo.id_grupo_FK = Grupo_Estudo.id_grupo " +
+                "WHERE Grupo_Estudo.id_grupo = ?"
             );
 
+            ps.setInt(1, id);
             rs = ps.executeQuery();
 
             List<HorarioEstudo> horariosEstudo = new ArrayList<>();
-            Map<Integer, GrupoEstudo> grupoMap = new HashMap<>();
             
             while(rs.next()){
-                Integer key = rs.getInt("id_grupo_FK");
-
-                if(!grupoMap.containsKey(key)){
-                    GrupoEstudo grupoEstudo = GrupoEstudoMapper.createGrupoEstudo(rs);
-                    grupoMap.put(key, grupoEstudo);
-                }
-
+                GrupoEstudo grupoEstudo = GrupoEstudoMapper.createGrupoEstudo(rs);
                 HorarioEstudo horarioEstudo = HorarioEstudoMapper.createHorarioEstudo(rs);
-                horarioEstudo.setGrupoEstudo(grupoMap.get(key));
+                
+                horarioEstudo.setGrupoEstudo(grupoEstudo);
 
                 horariosEstudo.add(horarioEstudo);
             }
+            
             return horariosEstudo;
         } catch (SQLException e) {
             throw new DbException(e.getMessage());

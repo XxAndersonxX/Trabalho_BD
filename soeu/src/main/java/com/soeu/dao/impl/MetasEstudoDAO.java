@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.soeu.dao.interfaces.EntityDAO;
 import com.soeu.entities.GrupoEstudo;
@@ -138,7 +136,7 @@ public class MetasEstudoDAO implements EntityDAO<MetasEstudo>{
     }
 
     @Override
-    public List<MetasEstudo> findAll() {
+    public List<MetasEstudo> findAllById(Integer id) {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -147,24 +145,20 @@ public class MetasEstudoDAO implements EntityDAO<MetasEstudo>{
                 "SELECT Metas_Estudo.*, Grupo_Estudo.* " +
                 "FROM Metas_Estudo " +
                 "INNER JOIN Grupo_Estudo " +
-                "ON Metas_Estudo.id_grupo_FK = Grupo_Estudo.id_grupo "
+                "ON Metas_Estudo.id_grupo_FK = Grupo_Estudo.id_grupo " +
+                "WHERE Grupo_Estudo.id_grupo = ?"
             );
 
+            ps.setInt(1, id);
             rs = ps.executeQuery();
 
             List<MetasEstudo> metas = new ArrayList<>();
-            Map<Integer, GrupoEstudo> grupoMap = new HashMap<>();
 
             while(rs.next()){
-                Integer key = rs.getInt("id_grupo_FK");
-
-                if(!grupoMap.containsKey(key)){
-                    GrupoEstudo grupo = GrupoEstudoMapper.createGrupoEstudo(rs);
-                    grupoMap.put(key, grupo);
-                }
-
+                GrupoEstudo grupo = GrupoEstudoMapper.createGrupoEstudo(rs);
                 MetasEstudo meta = MetasEstudoMapper.createMetas(rs);
-                meta.setGrupoEstudo(grupoMap.get(key));
+
+                meta.setGrupoEstudo(grupo);
 
                 metas.add(meta);
             }

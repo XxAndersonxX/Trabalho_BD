@@ -127,7 +127,7 @@ public class DisciplinaDAO implements EntityDAO<Disciplina>{
     }
 
     @Override
-    public List<Disciplina> findAll() {
+    public List<Disciplina> findAllById(Integer id) {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -139,10 +139,13 @@ public class DisciplinaDAO implements EntityDAO<Disciplina>{
             rs = ps.executeQuery();
 
             List<Disciplina> disciplinas = new ArrayList<>();
+
             while(rs.next()){
                 Disciplina disciplina = DisciplinaMapper.createDisciplina(rs);
+                
                 disciplinas.add(disciplina);
             }
+
             return disciplinas;
         } catch (SQLException e) {
             throw new DbException(e.getMessage());

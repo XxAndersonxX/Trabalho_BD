@@ -128,7 +128,7 @@ public class ProfessorDAO implements EntityDAO<Professor>{
     }
     
     @Override
-    public List<Professor> findAll() {
+    public List<Professor> findAllById(Integer id) {
         PreparedStatement ps = null;
         ResultSet rs = null;
 

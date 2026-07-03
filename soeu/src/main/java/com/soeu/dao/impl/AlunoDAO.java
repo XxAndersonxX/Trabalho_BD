@@ -133,7 +133,7 @@ public class AlunoDAO implements EntityDAO<Aluno>{
     }
 
     @Override
-    public List<Aluno> findAll() {
+    public List<Aluno> findAllById(Integer id) {
         PreparedStatement declara = null;
         ResultSet resultadoSet = null;
 
@@ -145,10 +145,13 @@ public class AlunoDAO implements EntityDAO<Aluno>{
             resultadoSet = declara.executeQuery();
 
             List<Aluno> alunos = new ArrayList<>();
+
             while(resultadoSet.next()){
                 Aluno aluno = AlunoMapper.createAluno(resultadoSet);
+
                 alunos.add(aluno);
             }
+
             return alunos;
         } catch (SQLException e) {
             throw new DbException(e.getMessage());

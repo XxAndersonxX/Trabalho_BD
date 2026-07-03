@@ -128,7 +128,7 @@ public class ProvaDAO implements EntityDAO<Prova>{
     }
 
     @Override
-    public List<Prova> findAll() {
+    public List<Prova> findAllById(Integer id) {
         PreparedStatement ps = null;
         ResultSet rs = null;
 

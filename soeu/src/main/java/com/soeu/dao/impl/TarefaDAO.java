@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.soeu.dao.interfaces.EntityDAO;
 import com.soeu.entities.Aluno;
@@ -139,7 +137,7 @@ public class TarefaDAO implements EntityDAO<Tarefa>{
     }
 
     @Override
-    public List<Tarefa> findAll() {
+    public List<Tarefa> findAllById(Integer id) {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -148,27 +146,23 @@ public class TarefaDAO implements EntityDAO<Tarefa>{
                 "SELECT Tarefa.*, Aluno.* " +
                 "FROM Tarefa " +
                 "INNER JOIN Aluno " +
-                "ON Tarefa.matricula_FK = Aluno.matricula " 
+                "ON Tarefa.matricula_FK = Aluno.matricula " +
+                "WHERE Aluno.matricula = ?"
             );
             
             rs = ps.executeQuery();
 
             List<Tarefa> tarefas = new ArrayList<>();
-            Map<Integer, Aluno> alunoMap = new HashMap<>();
             
             while(rs.next()){
-                Integer key = rs.getInt("matricula_FK");
-
-                if(!alunoMap.containsKey(key)){
-                    Aluno aluno = AlunoMapper.createAluno(rs);
-                    alunoMap.put(key, aluno);
-                }
-
+                Aluno aluno = AlunoMapper.createAluno(rs);
                 Tarefa tarefa = TarefaMapper.createTarefa(rs);
-                tarefa.setAluno(alunoMap.get(key));
+
+                tarefa.setAluno(aluno);
 
                 tarefas.add(tarefa);
             }
+            
             return tarefas;
         } catch (SQLException e) {
             throw new DbException(e.getMessage());

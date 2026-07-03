@@ -149,7 +149,7 @@ public class TurmaDAO implements EntityDAO<Turma>{
     }
 
     @Override
-    public List<Turma> findAll() {
+    public List<Turma> findAllById(Integer id) {
         PreparedStatement ps = null;
         ResultSet rs = null;
 

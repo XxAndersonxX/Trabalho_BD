@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.soeu.dao.interfaces.EntityDAO;
 import com.soeu.entities.Disciplina;
@@ -138,7 +136,7 @@ public class MaterialDAO implements EntityDAO<Material>{
     }
 
     @Override
-    public List<Material> findAll() {
+    public List<Material> findAllById(Integer id) {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -147,27 +145,23 @@ public class MaterialDAO implements EntityDAO<Material>{
                 "SELECT Material.*, Disciplina.* " +
                 "FROM Material " +
                 "INNER JOIN Disciplina " +
-                "ON Material.codigo_FK = Disciplina.codigo " 
+                "ON Material.codigo_FK = Disciplina.codigo " +
+                "WHERE Disciplina.codigo = ?"
             );
             
             rs = ps.executeQuery();
 
             List<Material> materiais = new ArrayList<>();
-            Map<Integer, Disciplina> disMap = new HashMap<>();
             
             while(rs.next()){
-                Integer key = rs.getInt("codigo_FK");
-
-                if(!disMap.containsKey(key)){
-                    Disciplina disciplina = DisciplinaMapper.createDisciplina(rs);
-                    disMap.put(key, disciplina);
-                }
-
+                Disciplina disciplina = DisciplinaMapper.createDisciplina(rs);
                 Material material = MaterialMapper.createMaterial(rs);
-                material.setDisciplina(disMap.get(key));
+
+                material.setDisciplina(disciplina);
 
                 materiais.add(material);
             }
+            
             return materiais;
         } catch (SQLException e) {
             throw new DbException(e.getMessage());

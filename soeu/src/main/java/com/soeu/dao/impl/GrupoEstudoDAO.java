@@ -123,7 +123,7 @@ public class GrupoEstudoDAO implements EntityDAO<GrupoEstudo>{
     }
 
     @Override
-    public List<GrupoEstudo> findAll() {
+    public List<GrupoEstudo> findAllById(Integer id) {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -135,10 +135,13 @@ public class GrupoEstudoDAO implements EntityDAO<GrupoEstudo>{
             rs = ps.executeQuery();
 
             List<GrupoEstudo> grupos = new ArrayList<>();
+
             while(rs.next()){
                 GrupoEstudo grupoEstudo = GrupoEstudoMapper.createGrupoEstudo(rs);
+
                 grupos.add(grupoEstudo);
             }
+            
             return grupos;
         } catch (SQLException e) {
             throw new DbException(e.getMessage());

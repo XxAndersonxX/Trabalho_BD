@@ -141,7 +141,7 @@ public class NotificacoesDAO implements EntityDAO<Notificacoes>{
     }
 
     @Override
-    public List<Notificacoes> findAll() {
+    public List<Notificacoes> findAllById(Integer id) {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
