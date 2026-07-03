@@ -49,8 +49,8 @@ public class MetaEstudoPanel {
 
     private void criarMetas(){
         try{
-            int horas = Integer.parseInt(JOptionPane.showInputDialog("Horas meta:"));
             String descricao = JOptionPane.showInputDialog("Descrição:");
+            int horas = Integer.parseInt(JOptionPane.showInputDialog("Horas meta:"));
 
             MetasEstudo meta = new MetasEstudo(horas, descricao, grupoAtual);
 
@@ -64,15 +64,15 @@ public class MetaEstudoPanel {
 
     private void listarMetas(){
 
-        List<MetasEstudo> metas = metaService.read();
+        List<MetasEstudo> metas = metaService.read(grupoAtual.getIdGrupo());
         StringBuilder texto = new StringBuilder();
 
         for(MetasEstudo m : metas){
             texto.append(
-                "Horas: "
-                + m.getHoraMeta()
-                + "\nMeta: "
+                "Meta: "
                 + m.getMetasEstudo()
+                + "\nHoras: "
+                + m.getHoraMeta()
                 + "\n\n"
             );
         }
@@ -81,10 +81,52 @@ public class MetaEstudoPanel {
     }
 
     private void alterarMetas(){
-        JOptionPane.showMessageDialog(null, "Implementar alteração");
+        List<MetasEstudo> metas = metaService.read(grupoAtual.getIdGrupo());
+        MetasEstudo[] vetor = metas.toArray(MetasEstudo[]::new); 
+
+        MetasEstudo meta = (MetasEstudo) JOptionPane.showInputDialog( 
+                null,
+                "Selecione meta:", 
+                null, 
+                JOptionPane.PLAIN_MESSAGE, 
+                null, 
+                vetor, 
+                vetor[0] 
+            ); 
+
+        String metas_estudo = JOptionPane.showInputDialog(null, "Meta de estudo: ");
+        String hora = JOptionPane.showInputDialog(null, "Horas a dedicar: ");
+
+        try {
+            Integer hora_meta = Integer.valueOf(hora);
+
+            meta.setHoraMeta(hora_meta);
+            meta.setMetasEstudo(metas_estudo);
+            
+            metaService.update(meta);
+            JOptionPane.showMessageDialog(null, "Meta alterada"); 
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, "Formato de hora inválido. Use apenas números");
+        }
     }
 
     private void apagarMetas(){
-        JOptionPane.showMessageDialog(null, "Implementar exclusão");
+        List<MetasEstudo> metas = metaService.read(grupoAtual.getIdGrupo()); 
+        MetasEstudo[] vetor = metas.toArray(MetasEstudo[]::new); 
+        
+        MetasEstudo meta = (MetasEstudo) JOptionPane.showInputDialog( 
+                null,
+                "Selecione meta:", 
+                null,
+                JOptionPane.PLAIN_MESSAGE, 
+                null, 
+                vetor, 
+                vetor[0] 
+            ); 
+            
+        if(meta != null){ 
+            metaService.delete(meta); 
+            JOptionPane.showMessageDialog(null, "Meta apagada"); 
+        }
     }
 }
