@@ -34,4 +34,9 @@ public class AlunoService {
     public Aluno buscarPorId(Integer matricula) {
         return alunoDAO.findById(matricula);
     }
+    
+    public Aluno buscarNaViewPorId(Integer matricula) {
+        return alunoDAO.buscarNaViewPorId(matricula);
+    }
+    
 }

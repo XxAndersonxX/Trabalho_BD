@@ -145,17 +145,28 @@ public class MinhaContaTela extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-     AlunoService alunoService = new AlunoService();
+try {
+        AlunoService alunoService = new AlunoService();
 
-    Aluno alunoAtualizado = alunoService.buscarPorId(alunoLogado.getMatricula());
+        Aluno alunoAtualizado =
+                alunoService.buscarNaViewPorId(alunoLogado.getMatricula());
 
-    javax.swing.JOptionPane.showMessageDialog(this,
-        "Email: " + alunoAtualizado.getEmail() +
-        "\nCurso: " + alunoAtualizado.getCurso() +
-        "\nIRA: " + alunoAtualizado.getIra() +
-        "\nPeríodo: " + alunoAtualizado.getPeriodo() +
-        "\nData de nascimento: " + alunoAtualizado.getDataNascimento()
-    );
+        if (alunoAtualizado == null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Aluno não encontrado.");
+            return;
+        }
+
+        javax.swing.JOptionPane.showMessageDialog(this,
+            "Email: " + alunoAtualizado.getEmail() +
+            "\nCurso: " + alunoAtualizado.getCurso() +
+            "\nIRA: " + alunoAtualizado.getIra() +
+            "\nPeríodo: " + alunoAtualizado.getPeriodo() +
+            "\nData de nascimento: " + alunoAtualizado.getDataNascimento()
+        );
+
+    } catch (RuntimeException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, e.getMessage());
+    }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

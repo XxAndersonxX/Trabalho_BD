@@ -145,3 +145,14 @@ CREATE TABLE Participa (
         REFERENCES Grupo_Estudo(id_grupo)
         ON DELETE CASCADE
 );
+
+CREATE VIEW vw_alunos AS
+SELECT
+    matricula,
+    email,
+    curso,
+    senha,
+    ira,
+    periodo,
+    data_nascimento
+FROM Aluno;

@@ -187,5 +187,32 @@ public class AlunoDAO implements EntityDAO<Aluno>{
             DB.closeStatement(declaracao);
         }
     }
+  
+    public Aluno buscarNaViewPorId(Integer matricula) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+    try {
+        ps = conn.prepareStatement(
+            "SELECT * FROM vw_alunos WHERE matricula = ?"
+        );
+
+        ps.setInt(1, matricula);
+
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            return AlunoMapper.createAluno(rs);
+        }
+
+        return null;
+
+        } catch (SQLException e) {
+        throw new DbException(e.getMessage());
+        } finally {
+        DB.closeResultSet(rs);
+        DB.closeStatement(ps);
+        }
+    }
     
 }
