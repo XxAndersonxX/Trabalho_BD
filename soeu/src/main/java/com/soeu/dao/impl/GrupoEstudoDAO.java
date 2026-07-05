@@ -8,17 +8,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.soeu.dao.interfaces.EntityDAO;
+import com.soeu.dao.interfaces.AbstractDAO;
 import com.soeu.entities.GrupoEstudo;
 import com.soeu.mapper.GrupoEstudoMapper;
 import com.soeu.util.DB;
 import com.soeu.util.DbException;
 
-public class GrupoEstudoDAO implements EntityDAO<GrupoEstudo>{
-    private Connection conn;
-
+public class GrupoEstudoDAO extends AbstractDAO<GrupoEstudo>{
+    
     public GrupoEstudoDAO(Connection conn){
-        this.conn = conn;
+        super(conn);
     }
 
     @Override

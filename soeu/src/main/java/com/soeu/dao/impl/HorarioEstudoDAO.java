@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.soeu.dao.interfaces.EntityDAO;
+import com.soeu.dao.interfaces.AbstractDAO;
 import com.soeu.entities.GrupoEstudo;
 import com.soeu.entities.HorarioEstudo;
 import com.soeu.mapper.GrupoEstudoMapper;
@@ -16,11 +16,10 @@ import com.soeu.mapper.HorarioEstudoMapper;
 import com.soeu.util.DB;
 import com.soeu.util.DbException;
 
-public class HorarioEstudoDAO implements EntityDAO<HorarioEstudo>{
-    private Connection conn;
+public class HorarioEstudoDAO extends AbstractDAO<HorarioEstudo>{
 
     public HorarioEstudoDAO(Connection conn){
-        this.conn = conn;
+        super(conn);
     }
 
     @Override

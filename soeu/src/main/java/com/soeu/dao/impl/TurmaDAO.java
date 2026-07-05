@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.soeu.dao.interfaces.EntityDAO;
+import com.soeu.dao.interfaces.AbstractDAO;
 import com.soeu.entities.Disciplina;
 import com.soeu.entities.Professor;
 import com.soeu.entities.Turma;
@@ -20,12 +20,10 @@ import com.soeu.mapper.TurmaMapper;
 import com.soeu.util.DB;
 import com.soeu.util.DbException;
 
-public class TurmaDAO implements EntityDAO<Turma>{
-
-    private Connection conn;
+public class TurmaDAO extends AbstractDAO<Turma>{
 
     public TurmaDAO(Connection conn){
-        this.conn = conn;
+        super(conn);
     }
 
     @Override

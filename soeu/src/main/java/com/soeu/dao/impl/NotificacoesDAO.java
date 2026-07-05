@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.soeu.dao.interfaces.EntityDAO;
+import com.soeu.dao.interfaces.AbstractDAO;
 import com.soeu.entities.Aluno;
 import com.soeu.entities.Notificacoes;
 import com.soeu.mapper.AlunoMapper;
@@ -18,11 +18,10 @@ import com.soeu.mapper.NotificacoesMapper;
 import com.soeu.util.DB;
 import com.soeu.util.DbException;
 
-public class NotificacoesDAO implements EntityDAO<Notificacoes>{
-    private Connection conn;
+public class NotificacoesDAO extends AbstractDAO<Notificacoes>{
 
     public NotificacoesDAO(Connection conn){
-        this.conn = conn;
+        super(conn);
     }
 
     @Override
@@ -113,7 +112,7 @@ public class NotificacoesDAO implements EntityDAO<Notificacoes>{
 
         try {
             ps = conn.prepareStatement(
-                "SELECT Notificacoes.*, Aluno.*" +
+                "SELECT Notificacoes.*, Aluno.* " +
                 "FROM Notificacoes " +
                 "INNER JOIN Aluno " +
                 "ON Notificacoes.matricula_FK = Aluno.matricula " +
