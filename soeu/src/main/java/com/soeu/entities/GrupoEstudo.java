@@ -30,9 +30,6 @@ public class GrupoEstudo {
 
     @Override
     public String toString() {
-        return "GrupoEstudo{" +
-                "idGrupo=" + idGrupo +
-                ", descricao='" + descricao + '\'' +
-                '}';
+        return descricao;
     }
 }
