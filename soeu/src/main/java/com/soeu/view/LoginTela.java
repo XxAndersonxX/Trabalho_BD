@@ -114,7 +114,7 @@ public class LoginTela extends javax.swing.JFrame {
 
         javax.swing.JOptionPane.showMessageDialog(this, "Login realizado com sucesso!");
         
-        new TelaPrincipal().setVisible(true);
+        new TelaPrincipal(aluno).setVisible(true);
         this.dispose();
 
     } catch (RuntimeException e) {
