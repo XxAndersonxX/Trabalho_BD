@@ -103,7 +103,9 @@ public class LoginTela extends javax.swing.JFrame {
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
         
     String email = txtEmail.getText();
-    String senha = new String(txtSenha.getPassword());    if (email.isBlank() || senha.isBlank()) {
+    String senha = new String(txtSenha.getPassword());
+
+    if (email.isBlank() || senha.isBlank()) {
         javax.swing.JOptionPane.showMessageDialog(this, "Preencha email e senha.");
         return;
     }
@@ -113,15 +115,15 @@ public class LoginTela extends javax.swing.JFrame {
         Aluno aluno = authService.autenticar(email, senha);
 
         javax.swing.JOptionPane.showMessageDialog(this, "Login realizado com sucesso!");
-        
-        new TelaPrincipal().setVisible(true);
+
+        new TelaPrincipal(aluno).setVisible(true);
         this.dispose();
 
     } catch (RuntimeException e) {
         javax.swing.JOptionPane.showMessageDialog(this, e.getMessage());
     }
 
-        
+       
     }//GEN-LAST:event_botaoEntrarActionPerformed
 
     private void botaoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastroActionPerformed

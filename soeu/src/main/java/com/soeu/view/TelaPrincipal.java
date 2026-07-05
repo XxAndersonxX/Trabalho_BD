@@ -4,11 +4,20 @@
  */
 package com.soeu.view;
 
+import com.soeu.entities.Aluno;
+
 /**
  *
  * @author Anderson
  */
 public class TelaPrincipal extends javax.swing.JFrame {
+    
+    private Aluno alunoLogado;
+    
+    public TelaPrincipal(Aluno aluno) {
+    initComponents();
+    this.alunoLogado = aluno;
+}
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaPrincipal.class.getName());
 
@@ -29,41 +38,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btMinhaConta = new javax.swing.JButton();
+        btDisciplinas = new javax.swing.JButton();
+        btGrupoEstudo = new javax.swing.JButton();
+        btNotificacoes = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Sistema de Estudos Universitário");
 
-        jButton1.setText("Cadastro de Alunos");
+        btMinhaConta.setText("Minha Conta");
+        btMinhaConta.addActionListener(this::btMinhaContaActionPerformed);
 
-        jButton2.setText("Disciplinas");
+        btDisciplinas.setText("Disciplinas");
 
-        jButton3.setText("Gupo de Estudos");
-        jButton3.addActionListener(this::jButton3ActionPerformed);
+        btGrupoEstudo.setText("Gupo de Estudos");
+        btGrupoEstudo.addActionListener(this::btGrupoEstudoActionPerformed);
 
-        jButton4.setText("Horarios");
-        jButton4.addActionListener(this::jButton4ActionPerformed);
+        btNotificacoes.setText("Notificações");
+        btNotificacoes.addActionListener(this::btNotificacoesActionPerformed);
 
-        jButton5.setText("Metas");
-
-        jButton6.setText("Materiais");
-
-        jButton7.setText("Provas");
-
-        jButton8.setText("Tarefas");
-
-        jButton9.setText("Sair");
-        jButton9.addActionListener(this::jButton9ActionPerformed);
+        btSair.setText("Sair");
+        btSair.addActionListener(this::btSairActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,24 +73,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                            .addComponent(btDisciplinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btMinhaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btGrupoEstudo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btNotificacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(5, 5, 5)))
                 .addGap(69, 69, 69))
             .addGroup(layout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addComponent(jButton9)
+                .addGap(139, 139, 139)
+                .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -102,43 +93,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton5))
+                    .addComponent(btMinhaConta)
+                    .addComponent(btGrupoEstudo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton8))
-                .addGap(34, 34, 34)
-                .addComponent(jButton9)
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(btDisciplinas)
+                    .addComponent(btNotificacoes))
+                .addGap(18, 18, 18)
+                .addComponent(btSair)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btNotificacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNotificacoesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btNotificacoesActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btGrupoEstudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrupoEstudoActionPerformed
         com.soeu.entities.GrupoEstudo grupo = new com.soeu.entities.GrupoEstudo();
         grupo.setIdGrupo(1);
         grupo.setDescricao("Programação Java");
 
         new GrupoEstudoTela(grupo).setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btGrupoEstudoActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
     new LoginTela().setVisible(true);
-    this.dispose();     }//GEN-LAST:event_jButton9ActionPerformed
+    this.dispose();     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btMinhaContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMinhaContaActionPerformed
+        new MinhaContaTela(alunoLogado).setVisible(true);    }//GEN-LAST:event_btMinhaContaActionPerformed
 
     
     /**
@@ -167,15 +153,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton btDisciplinas;
+    private javax.swing.JButton btGrupoEstudo;
+    private javax.swing.JButton btMinhaConta;
+    private javax.swing.JButton btNotificacoes;
+    private javax.swing.JButton btSair;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
