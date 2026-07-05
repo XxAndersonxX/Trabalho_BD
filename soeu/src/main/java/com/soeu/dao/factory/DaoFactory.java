@@ -4,11 +4,14 @@ import com.soeu.dao.impl.AlunoDAO;
 import com.soeu.dao.impl.DisciplinaDAO;
 import com.soeu.dao.impl.GrupoEstudoDAO;
 import com.soeu.dao.impl.HorarioEstudoDAO;
+import com.soeu.dao.impl.MatriculaDAO;
 import com.soeu.dao.impl.MetasEstudoDAO;
 import com.soeu.dao.impl.NotificacoesDAO;
+import com.soeu.dao.impl.ParticipaDAO;
 import com.soeu.dao.impl.ProfessorDAO;
 import com.soeu.dao.impl.ProvaDAO;
 import com.soeu.dao.impl.TarefaDAO;
+import com.soeu.dao.impl.TemDAO;
 import com.soeu.dao.impl.TurmaDAO;
 import com.soeu.util.DB;
 
@@ -51,5 +54,17 @@ public class DaoFactory {
 
     public static TurmaDAO createTurmaDAO(){
         return new TurmaDAO(DB.getMySQLConnection());
+    }
+
+    public static ParticipaDAO createParticipaDAO(){
+        return new ParticipaDAO(DB.getMySQLConnection());
+    }
+
+    public static MatriculaDAO createMatriculaDAO(){
+        return new MatriculaDAO(DB.getMySQLConnection());
+    }
+
+    public static TemDAO createTemDAO(){
+        return new TemDAO(DB.getMySQLConnection());
     }
 }
