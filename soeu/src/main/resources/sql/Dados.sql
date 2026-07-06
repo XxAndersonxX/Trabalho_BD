@@ -82,11 +82,11 @@ VALUES
 INSERT INTO Notificacoes
 (data,status,descricao,matricula_FK)
 VALUES
-('2026-06-01','Pendente','Nova atividade',1),
-('2026-06-02','Lida','Prova marcada',2),
-('2026-06-03','Pendente','Grupo atualizado',3),
-('2026-06-04','Lida','Material disponível',4),
-('2026-06-05','Pendente','Prazo alterado',5);
+('2026-06-11','Pendente','Nova atividade',1),
+('2026-06-13','Lida','Prova marcada',2),
+('2026-06-15','Pendente','Grupo atualizado',3),
+('2026-06-22','Lida','Material disponível',4),
+('2026-06-23','Pendente','Prazo alterado',5);
 
 INSERT INTO Tarefa
 (prazo,status,matricula_FK)

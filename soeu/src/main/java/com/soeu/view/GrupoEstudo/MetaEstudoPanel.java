@@ -1,5 +1,6 @@
-package com.soeu.view;
+package com.soeu.view.GrupoEstudo;
 
+import java.awt.HeadlessException;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -48,16 +49,17 @@ public class MetaEstudoPanel {
     }
 
     private void criarMetas(){
+        
         try{
             String descricao = JOptionPane.showInputDialog("Descrição:");
             int horas = Integer.parseInt(JOptionPane.showInputDialog("Horas meta:"));
-
+            
             MetasEstudo meta = new MetasEstudo(horas, descricao, grupoAtual);
 
             metaService.create(meta);
 
             JOptionPane.showMessageDialog(null, "Meta criada!");
-        }catch(Exception e){
+        }catch(HeadlessException e){
             JOptionPane.showMessageDialog(null, "Valor inválido");
         }
     }
@@ -96,6 +98,11 @@ public class MetaEstudoPanel {
 
         String metas_estudo = JOptionPane.showInputDialog(null, "Meta de estudo: ");
         String hora = JOptionPane.showInputDialog(null, "Horas a dedicar: ");
+
+        metas_estudo = metas_estudo.trim();
+        hora = hora.trim();
+
+        if(metas_estudo.isEmpty() || hora.isEmpty()){return;}
 
         try {
             Integer hora_meta = Integer.valueOf(hora);

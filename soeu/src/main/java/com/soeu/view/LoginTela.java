@@ -15,6 +15,7 @@ public class LoginTela extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(LoginTela.class.getName());
 
+    
     /**
      * Creates new form LoginTela
      */
@@ -115,8 +116,8 @@ public class LoginTela extends javax.swing.JFrame {
         Aluno aluno = authService.autenticar(email, senha);
 
         javax.swing.JOptionPane.showMessageDialog(this, "Login realizado com sucesso!");
-
-        new TelaPrincipal(aluno).setVisible(true);
+        
+        new TelaPrincipal1(aluno).setVisible(true);
         this.dispose();
 
     } catch (RuntimeException e) {

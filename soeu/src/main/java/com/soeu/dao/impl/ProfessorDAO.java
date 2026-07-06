@@ -8,17 +8,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.soeu.dao.interfaces.EntityDAO;
+import com.soeu.dao.interfaces.AbstractDAO;
 import com.soeu.entities.Professor;
 import com.soeu.mapper.ProfessorMapper;
 import com.soeu.util.DB;
 import com.soeu.util.DbException;
 
-public class ProfessorDAO implements EntityDAO<Professor>{
-    private Connection conn;
+public class ProfessorDAO extends AbstractDAO<Professor>{
 
     public ProfessorDAO(Connection conn){
-        this.conn = conn;
+        super(conn);
     }
 
     @Override

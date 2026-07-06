@@ -1,4 +1,4 @@
-package com.soeu.view;
+package com.soeu.view.GrupoEstudo;
 
 import java.awt.HeadlessException;
 import java.time.LocalTime;
@@ -49,10 +49,16 @@ public class HorarioEstudoPanel {
     }
 
     private void criarHorario(){
-        String inicio = JOptionPane.showInputDialog("Hora inicial (HH:mm)");
-        String fim = JOptionPane.showInputDialog("Hora final (HH:mm)");
-
+        
         try{
+            String inicio = JOptionPane.showInputDialog("Hora inicial (HH:mm)");
+            String fim = JOptionPane.showInputDialog("Hora final (HH:mm)");
+    
+            inicio = inicio.trim();
+            fim = fim.trim();
+    
+            if(inicio.isEmpty() || fim.isEmpty()){return;}
+            
             LocalTime horaInicio = LocalTime.parse(inicio);
             LocalTime horaFim = LocalTime.parse(fim);
 
@@ -61,7 +67,7 @@ public class HorarioEstudoPanel {
             horaService.create(horario);
 
             JOptionPane.showMessageDialog(null,"Horário criado!");
-        }catch(Exception e){
+        }catch(HeadlessException e){
             JOptionPane.showMessageDialog(null, "Formato inválido");
         }
     }

@@ -8,17 +8,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.soeu.dao.interfaces.EntityDAO;
+import com.soeu.dao.interfaces.AbstractDAO;
 import com.soeu.entities.Prova;
 import com.soeu.mapper.ProvaMapper;
 import com.soeu.util.DB;
 import com.soeu.util.DbException;
 
-public class ProvaDAO implements EntityDAO<Prova>{
-    private Connection conn;
+public class ProvaDAO extends AbstractDAO<Prova>{
 
     public ProvaDAO(Connection conn){
-        this.conn = conn;
+        super(conn);
     }
 
     @Override

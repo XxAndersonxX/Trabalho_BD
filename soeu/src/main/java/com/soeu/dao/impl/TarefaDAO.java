@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.soeu.dao.interfaces.EntityDAO;
+import com.soeu.dao.interfaces.AbstractDAO;
 import com.soeu.entities.Aluno;
 import com.soeu.entities.Tarefa;
 import com.soeu.mapper.AlunoMapper;
@@ -16,11 +16,10 @@ import com.soeu.mapper.TarefaMapper;
 import com.soeu.util.DB;
 import com.soeu.util.DbException;
 
-public class TarefaDAO implements EntityDAO<Tarefa>{
-    private Connection conn;
+public class TarefaDAO extends AbstractDAO<Tarefa>{
 
     public TarefaDAO(Connection conn){
-        this.conn = conn;
+        super(conn);
     }
 
     @Override

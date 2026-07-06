@@ -8,17 +8,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.soeu.dao.interfaces.EntityDAO;
+import com.soeu.dao.interfaces.AbstractDAO;
 import com.soeu.entities.Disciplina;
 import com.soeu.mapper.DisciplinaMapper;
 import com.soeu.util.DB;
 import com.soeu.util.DbException;
 
-public class DisciplinaDAO implements EntityDAO<Disciplina>{
-    private Connection conn;
-
+public class DisciplinaDAO extends AbstractDAO<Disciplina>{
+    
     public DisciplinaDAO(Connection conn){
-        this.conn = conn;
+        super(conn);
     }
 
     @Override

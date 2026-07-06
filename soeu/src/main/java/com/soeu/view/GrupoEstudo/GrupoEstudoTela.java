@@ -1,4 +1,4 @@
-package com.soeu.view;
+package com.soeu.view.GrupoEstudo;
 
 import com.soeu.entities.GrupoEstudo;
 

@@ -10,24 +10,24 @@ import com.soeu.entities.Aluno;
  *
  * @author Anderson
  */
-public class TelaPrincipal extends javax.swing.JFrame {
+public class TelaPrincipal1 extends javax.swing.JFrame {
     
-    private Aluno alunoLogado;
-    
-    public TelaPrincipal(Aluno aluno) {
-    initComponents();
-    this.alunoLogado = aluno;
-}
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaPrincipal.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaPrincipal1.class.getName());
 
+    private Aluno alunoLogado;
+
+    public TelaPrincipal1(Aluno aluno) {
+        initComponents();
+        this.alunoLogado = aluno;
+    }
+    
     /**
-     * Creates new form TelaPrincipal
+     * Creates new form TelaPrincipal1
      */
-    public TelaPrincipal() {
+    public TelaPrincipal1() {
         initComponents();
     }
- 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,7 +52,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btMinhaConta.setText("Minha Conta");
         btMinhaConta.addActionListener(this::btMinhaContaActionPerformed);
 
-        btDisciplinas.setText("Disciplinas");
+        btDisciplinas.setText("Curso");
+        btDisciplinas.addActionListener(this::btDisciplinasActionPerformed);
 
         btGrupoEstudo.setText("Gupo de Estudos");
         btGrupoEstudo.addActionListener(this::btGrupoEstudoActionPerformed);
@@ -68,28 +69,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btDisciplinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btMinhaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btGrupoEstudo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btNotificacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(5, 5, 5)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btDisciplinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btMinhaConta, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btGrupoEstudo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btNotificacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(5, 5, 5)))
-                .addGap(69, 69, 69))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(66, 66, 66)
+                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(58, 58, 58)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -101,32 +103,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(btNotificacoes))
                 .addGap(18, 18, 18)
                 .addComponent(btSair)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btNotificacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNotificacoesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btNotificacoesActionPerformed
+    private void btMinhaContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMinhaContaActionPerformed
+        new MinhaContaTela(alunoLogado).setVisible(true);
+    }//GEN-LAST:event_btMinhaContaActionPerformed
 
     private void btGrupoEstudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrupoEstudoActionPerformed
-        com.soeu.entities.GrupoEstudo grupo = new com.soeu.entities.GrupoEstudo();
-        grupo.setIdGrupo(1);
-        grupo.setDescricao("Programação Java");
+    com.soeu.view.GrupoEstudo.GrupoEstudoMenu menu =
+            new com.soeu.view.GrupoEstudo.GrupoEstudoMenu(alunoLogado);
 
-        new GrupoEstudoTela(grupo).setVisible(true);
+    menu.abrirMenuGrupo();
+
     }//GEN-LAST:event_btGrupoEstudoActionPerformed
+
+    private void btNotificacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNotificacoesActionPerformed
+    NotificacaoTela notificacaoTela = new NotificacaoTela(alunoLogado);
+    notificacaoTela.listarNotificacoes();    }//GEN-LAST:event_btNotificacoesActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
     new LoginTela().setVisible(true);
-    this.dispose();     }//GEN-LAST:event_btSairActionPerformed
+    this.dispose();    }//GEN-LAST:event_btSairActionPerformed
 
-    private void btMinhaContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMinhaContaActionPerformed
-        new MinhaContaTela(alunoLogado).setVisible(true);    }//GEN-LAST:event_btMinhaContaActionPerformed
+    private void btDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDisciplinasActionPerformed
+        new TelaCurso(alunoLogado).setVisible(true);    }//GEN-LAST:event_btDisciplinasActionPerformed
 
-    
     /**
      * @param args the command line arguments
      */
@@ -149,7 +154,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new TelaPrincipal().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new TelaPrincipal1().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

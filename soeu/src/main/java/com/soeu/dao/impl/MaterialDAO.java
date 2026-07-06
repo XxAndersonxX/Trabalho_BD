@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.soeu.dao.interfaces.EntityDAO;
+import com.soeu.dao.interfaces.AbstractDAO;
 import com.soeu.entities.Disciplina;
 import com.soeu.entities.Material;
 import com.soeu.mapper.DisciplinaMapper;
@@ -16,11 +16,10 @@ import com.soeu.mapper.MaterialMapper;
 import com.soeu.util.DB;
 import com.soeu.util.DbException;
 
-public class MaterialDAO implements EntityDAO<Material>{
-    private Connection conn;
+public class MaterialDAO extends AbstractDAO<Material>{
 
     public MaterialDAO(Connection conn){
-        this.conn = conn;
+        super(conn);
     }
 
     @Override

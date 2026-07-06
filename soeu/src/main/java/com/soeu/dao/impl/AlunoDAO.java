@@ -8,17 +8,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.soeu.dao.interfaces.EntityDAO;
+import com.soeu.dao.interfaces.AbstractDAO;
 import com.soeu.entities.Aluno;
 import com.soeu.mapper.AlunoMapper;
 import com.soeu.util.DB;
 import com.soeu.util.DbException;
 
-public class AlunoDAO implements EntityDAO<Aluno>{
-    private Connection conn;
-
+public class AlunoDAO extends AbstractDAO<Aluno>{
+    
     public AlunoDAO(Connection conn){
-        this.conn = conn;
+        super(conn);
     }
 
     @Override

@@ -63,11 +63,6 @@ public class Notificacoes {
 
     @Override
     public String toString() {
-        return "Notificacao{" +
-                "idNotificacao=" + idNotificacao +
-                ", data=" + data +
-                ", status='" + status + '\'' +
-                ", descricao='" + descricao + '\'' +
-                '}';
+        return "Atividade para dia " + data;
     }
 }
