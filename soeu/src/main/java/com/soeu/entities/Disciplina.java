@@ -1,8 +1,8 @@
 package com.soeu.entities;
 
 public class Disciplina {
+    private String nome;
     private Integer codigo;
-    private String nomeDisciplina;
     private Integer creditos;
     private String curso;
     private Integer periodo;
@@ -10,21 +10,21 @@ public class Disciplina {
     public Disciplina() {
     }
 
-    public Disciplina(String nomeDisciplina, Integer creditos, String curso, Integer periodo) {
-        this.nomeDisciplina = nomeDisciplina;
+    public Disciplina(String nome, Integer creditos, String curso, Integer periodo) {
+        this.nome = nome;
         this.creditos = creditos;
         this.curso = curso;
         this.periodo = periodo;
     }
 
     public String getNome() {
-        return nomeDisciplina;
+        return nome;
     }
-
-    public void setNome(String nomeDisciplina) {
-        this.nomeDisciplina = nomeDisciplina;
+   
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-
+    
     public Integer getCodigo() {
         return codigo;
     }

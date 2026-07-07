@@ -28,7 +28,7 @@ public class ProfessorDAO extends AbstractDAO<Professor>{
         try {
             ps = conn.prepareStatement(
                 "INSERT INTO Professor " +
-                "(nome_professor, email, telefone) " +
+                "(nome, email, telefone) " +
                 "VALUES " +
                 "(?, ?, ?)",
                 Statement.RETURN_GENERATED_KEYS
@@ -63,7 +63,7 @@ public class ProfessorDAO extends AbstractDAO<Professor>{
         try {
             ps = conn.prepareStatement(
                 "UPDATE Professor " + 
-                "SET nome_professor = ?, email = ?, telefone = ? " +
+                "SET nome = ?, email = ?, telefone = ? " +
                 "WHERE id_professor = ?"
             );
 

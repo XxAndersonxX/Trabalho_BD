@@ -9,7 +9,7 @@ public class ProfessorMapper {
     public static Professor createProfessor(ResultSet rs) throws SQLException {
         Professor professor = new Professor();
         professor.setIdProfessor(rs.getInt("id_professor"));
-        professor.setNome(rs.getString("nome_professor"));
+        professor.setNome(rs.getString("nome"));
         professor.setEmail(rs.getString("email"));
         professor.setTelefone(rs.getString("telefone"));
         professor.setNome(rs.getString("nome"));

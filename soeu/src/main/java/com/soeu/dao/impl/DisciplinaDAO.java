@@ -28,7 +28,7 @@ public class DisciplinaDAO extends AbstractDAO<Disciplina>{
         try {
             ps = conn.prepareStatement(
                 "INSERT INTO Disciplina " +
-                "(nome_disciplina, creditos, curso, periodo) " +
+                "(nome, creditos, curso, periodo) " +
                 "VALUES " +
                 "(?, ?, ?, ?)",
                 Statement.RETURN_GENERATED_KEYS
@@ -63,10 +63,10 @@ public class DisciplinaDAO extends AbstractDAO<Disciplina>{
         try {
             ps = conn.prepareStatement(
                 "UPDATE Disciplina " + 
-                "SET nome_disciplina = ?, creditos = ?, curso = ?, periodo = ? " +
+                "SET nome = ?, creditos = ?, curso = ?, periodo = ? " +
                 "WHERE codigo = ?"
             );
-
+            
             ps.setString(1, disciplina.getNome());
             ps.setInt(2, disciplina.getCreditos());
             ps.setString(3, disciplina.getCurso());
