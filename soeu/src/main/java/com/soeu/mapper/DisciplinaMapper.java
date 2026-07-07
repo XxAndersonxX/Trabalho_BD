@@ -9,6 +9,7 @@ public class DisciplinaMapper {
     public static Disciplina createDisciplina(ResultSet rs) throws SQLException{
         Disciplina disciplina = new Disciplina();
         disciplina.setCodigo(rs.getInt("codigo"));
+        disciplina.setNome(rs.getString("nome_disciplina"));
         disciplina.setCreditos(rs.getInt("creditos"));
         disciplina.setCurso(rs.getString("curso"));
         disciplina.setPeriodo(rs.getInt("periodo"));

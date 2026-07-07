@@ -7,6 +7,7 @@ public class TurmaTela extends javax.swing.JFrame {
 
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel lblTurma;
+    private javax.swing.JLabel lblProfessor;
 
     private javax.swing.JButton btnProva;
     private javax.swing.JButton btnVoltar;
@@ -26,12 +27,14 @@ public class TurmaTela extends javax.swing.JFrame {
         provaPanel = new ProvaPanel(turmaAtual, alunoLogado);
 
         lblTurma.setText("Turma: ");
+        lblProfessor.setText("Professor: " + turmaAtual.getProfessor().getNome());
     }
 
     private void initComponents(){
 
         titulo = new javax.swing.JLabel();
         lblTurma = new javax.swing.JLabel();
+        lblProfessor = new javax.swing.JLabel();
 
         btnProva = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();

@@ -16,6 +16,10 @@ public class NotificacaoService {
         this.notificacaoDAO = DaoFactory.createNotificacoesDAO();
     }
 
+    public void create(Notificacoes not){
+        notificacaoDAO.insert(not);
+    } 
+
     public List<Notificacoes> read(Integer id){
         List<Notificacoes> notificacoes = notificacaoDAO.findAllById(id);
 

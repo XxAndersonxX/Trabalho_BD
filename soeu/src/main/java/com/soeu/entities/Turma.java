@@ -63,10 +63,7 @@ public class Turma {
 
     @Override
     public String toString() {
-        return "Turma{" +
-                "idTurma=" + idTurma +
-                ", semestre=" + semestre +
-                ", horario=" + horario +
-                '}';
+        return  "Semestre: " + semestre + " | " +
+                "Horario: " + horario;
     }
 }

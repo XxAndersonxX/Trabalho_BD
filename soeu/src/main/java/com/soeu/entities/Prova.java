@@ -42,10 +42,7 @@ public class Prova {
 
     @Override
     public String toString() {
-        return "Prova{" +
-                "idProva=" + idProva +
-                ", peso=" + peso +
-                ", data=" + data +
-                '}';
+        return  "Peso: " + peso +
+                "Data: " + data;
     }
 }
