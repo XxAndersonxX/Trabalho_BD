@@ -3,15 +3,25 @@ package com.soeu.entities;
 public class Professor {
 
     private Integer idProfessor;
+    private String nomeProfessor;
     private String email;
     private String telefone;
 
     public Professor() {
     }
 
-    public Professor(String email, String telefone) {
+    public Professor(String nomeProfessor, String email, String telefone) {
+        this.nomeProfessor = nomeProfessor;
         this.email = email;
         this.telefone = telefone;
+    }
+
+    public String getNome() {
+        return nomeProfessor;
+    }
+
+    public void setNome(String nomeProfessor) {
+        this.nomeProfessor = nomeProfessor;
     }
 
     public Integer getIdProfessor() {
@@ -40,10 +50,8 @@ public class Professor {
 
     @Override
     public String toString() {
-        return "Professor{" +
-                "idProfessor=" + idProfessor +
-                ", email='" + email + '\'' +
-                ", telefone='" + telefone + '\'' +
-                '}';
+        return "Professor: " + nomeProfessor + "\n" +
+                "Email: " + email + "\n" +
+                "Telefone: " + telefone + "\n";
     }
 }

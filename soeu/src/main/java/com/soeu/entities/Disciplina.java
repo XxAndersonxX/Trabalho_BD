@@ -3,6 +3,7 @@ package com.soeu.entities;
 public class Disciplina {
 
     private Integer codigo;
+    private String nomeDisciplina;
     private Integer creditos;
     private String curso;
     private Integer periodo;
@@ -10,10 +11,19 @@ public class Disciplina {
     public Disciplina() {
     }
 
-    public Disciplina(Integer creditos, String curso, Integer periodo) {
+    public Disciplina(String nomeDisciplina, Integer creditos, String curso, Integer periodo) {
+        this.nomeDisciplina = nomeDisciplina;
         this.creditos = creditos;
         this.curso = curso;
         this.periodo = periodo;
+    }
+
+    public String getNome() {
+        return nomeDisciplina;
+    }
+
+    public void setNome(String nomeDisciplina) {
+        this.nomeDisciplina = nomeDisciplina;
     }
 
     public Integer getCodigo() {
@@ -50,11 +60,8 @@ public class Disciplina {
 
     @Override
     public String toString() {
-        return "Disciplina{" +
-                "codigo=" + codigo +
-                ", creditos=" + creditos +
-                ", curso='" + curso + '\'' +
-                ", periodo=" + periodo +
-                '}';
+        return  "NomeDisciplina: " + creditos + " | " +
+                "Curso: " + curso + " | " +
+                "Periodo: " + periodo;
     }
 }

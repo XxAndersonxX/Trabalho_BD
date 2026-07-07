@@ -28,14 +28,15 @@ public class ProfessorDAO extends AbstractDAO<Professor>{
         try {
             ps = conn.prepareStatement(
                 "INSERT INTO Professor " +
-                "(email, telefone) " +
+                "(nome_professor, email, telefone) " +
                 "VALUES " +
-                "(?, ?)",
+                "(?, ?, ?)",
                 Statement.RETURN_GENERATED_KEYS
             );
 
-            ps.setString(1, professor.getEmail());
-            ps.setString(2, professor.getTelefone());
+            ps.setString(1, professor.getNome());
+            ps.setString(2, professor.getEmail());
+            ps.setString(3, professor.getTelefone());
 
             int linhasAfetadas = ps.executeUpdate();
 
@@ -62,13 +63,14 @@ public class ProfessorDAO extends AbstractDAO<Professor>{
         try {
             ps = conn.prepareStatement(
                 "UPDATE Professor " + 
-                "SET email = ?, telefone = ? " +
+                "SET nome_professor = ?, email = ?, telefone = ? " +
                 "WHERE id_professor = ?"
             );
 
-            ps.setString(1, professor.getEmail());
-            ps.setString(2, professor.getTelefone());
-            ps.setInt(3, professor.getIdProfessor());
+            ps.setString(1, professor.getNome());
+            ps.setString(2, professor.getEmail());
+            ps.setString(3, professor.getTelefone());
+            ps.setInt(4, professor.getIdProfessor());
 
             ps.executeUpdate();  
         } catch (SQLException e) {
