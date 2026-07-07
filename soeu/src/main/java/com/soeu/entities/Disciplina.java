@@ -1,7 +1,6 @@
 package com.soeu.entities;
 
 public class Disciplina {
-
     private Integer codigo;
     private String nomeDisciplina;
     private Integer creditos;
@@ -57,8 +56,8 @@ public class Disciplina {
     public void setPeriodo(Integer periodo) {
         this.periodo = periodo;
     }
-
-    @Override
+    
+        @Override
     public String toString() {
         return  "NomeDisciplina: " + creditos + " | " +
                 "Curso: " + curso + " | " +

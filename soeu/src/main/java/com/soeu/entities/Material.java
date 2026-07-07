@@ -1,19 +1,29 @@
 package com.soeu.entities;
 
+
+
 public class Material {
+    
 
     private Integer idMaterial;
     private String tipo;
     private String link;
+    private String nomeArquivo;
+    private byte[] arquivo;
+
 
     private Disciplina disciplina;
 
+    
     public Material() {
     }
 
-    public Material(String tipo, String link, Disciplina disciplina) {
+    public Material(String tipo, String link,String nomeArquivo, byte[] arquivo,
+ Disciplina disciplina) {
 
         this.tipo = tipo;
+        this.nomeArquivo = nomeArquivo;
+        this.arquivo = arquivo;
         this.link = link;
         this.disciplina = disciplina;
     }
@@ -50,6 +60,22 @@ public class Material {
             Disciplina disciplina) {
 
         this.disciplina = disciplina;
+    }
+    
+    public String getNomeArquivo() {
+        return nomeArquivo;
+    }
+
+    public void setNomeArquivo(String nomeArquivo) {
+        this.nomeArquivo = nomeArquivo;
+    }
+
+    public byte[] getArquivo() {
+        return arquivo;
+    }
+
+    public void setArquivo(byte[] arquivo) {
+        this.arquivo = arquivo;
     }
 
     @Override

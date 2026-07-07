@@ -19,6 +19,33 @@ INSERT INTO Prova (peso, data) VALUES
 (4.0,'2026-09-15'),
 (5.0,'2026-10-01');
 
+INSERT INTO Aluno
+(nome, email, curso, senha, ira, periodo, data_nascimento)
+VALUES
+('Ana','ana@email.com','Ciencia da Computacao','123',8.5,5,'2002-04-12'),
+('Bruno', 'bruno@email.com','Ciencia da Computacao','456',7.8,3,'2003-02-10'),
+('Carla' ,'carla@email.com','Engenharia Software','789',9.2,6,'2001-11-25'),
+('Diego', 'diego@email.com','Sistemas Informacao','321',6.7,2,'2004-06-18'),
+('Elisa', 'elisa@email.com','Ciencia da Computacao','654',8.9,4,'2002-09-30');
+
+INSERT INTO Disciplina
+(nome, creditos, curso, periodo)
+VALUES
+('Banco de Dados',4,'CIC',1),
+('Inteligência Artificial',6,'Ciencia da Computacao',2),
+('Calculo 1',4,'Engenharia Software',3),
+('Sistemas Operacionais',5,'Sistemas Informacao',4),
+('Calculo 2',4,'Ciencia da Computacao',5);
+
+INSERT INTO Professor
+(nome,email, telefone)
+VALUES
+('João', 'joao@universidade.com','61999990001'),
+('Maria','maria@universidade.com','61999990002'),
+('Carlos','carlos@universidade.com','61999990003'),
+('Juliana','juliana@universidade.com','61999990004'),
+('Roberto','roberto@universidade.com','61999990005');
+
 INSERT INTO Aluno (email, curso, senha, ira, periodo, data_nascimento) VALUES
 ('daniel@aluno.ufg.br','Ciência da Computação','123',8.5,4,'2003-04-15'),
 ('maria@aluno.ufg.br','Ciência da Computação','123',9.1,5,'2002-07-18'),
@@ -54,6 +81,15 @@ INSERT INTO Notificacoes (data, status, descricao, matricula_FK) VALUES
 ('2026-07-13','Pendente','Prazo final para envio do trabalho.',4),
 ('2026-07-15','Pendente','Início da semana de apresentações.',5),
 ('2026-07-20','Pendente','Entrega do projeto final.',1);
+
+INSERT INTO Notificacoes
+(data,status,descricao,matricula_FK)
+VALUES
+('2026-06-11','Pendente','Nova atividade',1),
+('2026-06-12','Lida','Prova marcada',2),
+('2026-06-13','Pendente','Grupo atualizado',3),
+('2026-06-14','Lida','Material disponível',4),
+('2026-06-15','Pendente','Prazo alterado',5);
 
 INSERT INTO Tarefa (prazo, status, matricula_FK) VALUES
 ('2026-07-15','Em andamento',1),

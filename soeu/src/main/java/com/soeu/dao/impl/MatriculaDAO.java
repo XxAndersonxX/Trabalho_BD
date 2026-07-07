@@ -60,12 +60,18 @@ public class MatriculaDAO {
 
             ps.executeUpdate();
         } catch (SQLException e) {
-            throw new DbException(e.getMessage());
-        }finally{
-            DB.closeStatement(ps);
+        if (e.getErrorCode() == 1451) {
+            throw new DbException(
+                "Não é possível excluir este registro, pois ele está vinculado a outros dados do sistema."
+            );
         }
-    }
 
+        throw new DbException(e.getMessage());
+
+    } finally {
+        DB.closeStatement(ps);
+    }
+    }
     public List<Turma> findTurmasByAluno(Integer matricula){
         PreparedStatement ps = null;
         ResultSet rs = null;

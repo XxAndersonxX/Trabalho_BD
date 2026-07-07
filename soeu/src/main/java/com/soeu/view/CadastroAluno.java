@@ -44,6 +44,8 @@ public class CadastroAluno extends javax.swing.JFrame {
         txtCurso = new javax.swing.JTextField();
         txtIra = new javax.swing.JTextField();
         txtPeriodo = new javax.swing.JTextField();
+        txtnome = new javax.swing.JTextField();
+        Lbemail1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -70,6 +72,12 @@ public class CadastroAluno extends javax.swing.JFrame {
         txtDataNascimento.setText("DD/MM/AAAA");
         txtDataNascimento.addActionListener(this::txtDataNascimentoActionPerformed);
 
+        txtEmail.addActionListener(this::txtEmailActionPerformed);
+
+        txtnome.addActionListener(this::txtnomeActionPerformed);
+
+        Lbemail1.setText("Nome:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,44 +86,41 @@ public class CadastroAluno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BtVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(BtCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Lbdatanascimento)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDataNascimento))))
+                        .addComponent(BtVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(BtCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                        .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Lbdatanascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtDataNascimento))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Lbemail)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(txtEmail))
-                                    .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addComponent(Lbira, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                                        .addGap(29, 29, 29))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Lbperiodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtIra)
+                                    .addComponent(txtPeriodo)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Lbcurso)
-                                    .addComponent(Lbsenha))
-                                .addGap(10, 10, 10)
+                                    .addComponent(Lbsenha, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Lbemail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Lbemail1))
+                                .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSenha2)
-                                    .addComponent(txtCurso)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Lbperiodo)
-                            .addComponent(Lbira))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIra)
-                            .addComponent(txtPeriodo))))
+                                    .addComponent(txtnome)
+                                    .addComponent(txtEmail)
+                                    .addComponent(txtCurso)
+                                    .addComponent(txtSenha2)))
+                            .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -123,7 +128,11 @@ public class CadastroAluno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lbemail1)
+                    .addComponent(txtnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Lbemail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -151,7 +160,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtVoltar)
                     .addComponent(BtCadastrar))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -169,6 +178,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     private void BtCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCadastrarActionPerformed
  
         try {
+            String nome = txtnome.getText();
             String email = txtEmail.getText();
             String senha = new String(txtSenha2.getPassword());
             String curso = txtCurso.getText();
@@ -181,7 +191,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         java.time.LocalDate dataNascimento =
         java.time.LocalDate.parse(txtDataNascimento.getText(), formato);
 
-        com.soeu.entities.Aluno aluno = new com.soeu.entities.Aluno(email,curso,senha,ira,periodo,dataNascimento);
+        com.soeu.entities.Aluno aluno = new com.soeu.entities.Aluno(nome,email,curso,senha,ira,periodo,dataNascimento);
 
         com.soeu.dao.impl.AlunoDAO alunoDAO = new com.soeu.dao.impl.AlunoDAO(com.soeu.util.DB.getMySQLConnection());
 
@@ -200,6 +210,14 @@ public class CadastroAluno extends javax.swing.JFrame {
         javax.swing.JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_BtCadastrarActionPerformed
+
+    private void txtnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnomeActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,6 +250,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     private javax.swing.JLabel Lbcurso;
     private javax.swing.JLabel Lbdatanascimento;
     private javax.swing.JLabel Lbemail;
+    private javax.swing.JLabel Lbemail1;
     private javax.swing.JLabel Lbira;
     private javax.swing.JLabel Lbperiodo;
     private javax.swing.JLabel Lbsenha;
@@ -243,5 +262,6 @@ public class CadastroAluno extends javax.swing.JFrame {
     private javax.swing.JTextField txtPeriodo;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JPasswordField txtSenha2;
+    private javax.swing.JTextField txtnome;
     // End of variables declaration//GEN-END:variables
 }

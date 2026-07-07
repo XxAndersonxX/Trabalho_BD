@@ -21,6 +21,7 @@ CREATE TABLE Prova (
 
 CREATE TABLE Aluno (
     matricula INTEGER AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100);
     email VARCHAR(255),
     curso VARCHAR(50),
     senha VARCHAR(50),
@@ -38,11 +39,13 @@ CREATE TABLE Material (
     id_material INTEGER AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(50),
     link VARCHAR(255),
+    nome_arquivo VARCHAR(255),
+    arquivo LONGBLOB,
     codigo_FK INTEGER,
-    
+
     FOREIGN KEY (codigo_FK)
         REFERENCES Disciplina(codigo)
-        ON DELETE CASCADE
+        ON DELETE RESTRICT
 );
 
 CREATE TABLE Turma (
@@ -54,11 +57,11 @@ CREATE TABLE Turma (
     
     FOREIGN KEY (codigo_FK)
         REFERENCES Disciplina(codigo)
-        ON DELETE CASCADE,
+        ON DELETE RESTRICT,
         
     FOREIGN KEY (id_professor_FK)
         REFERENCES Professor(id_professor)
-        ON DELETE CASCADE
+        ON DELETE RESTRICT
 );
 
 CREATE TABLE Notificacoes (
@@ -70,7 +73,7 @@ CREATE TABLE Notificacoes (
     
     FOREIGN KEY (matricula_FK)
         REFERENCES Aluno(matricula)
-        ON DELETE CASCADE
+        ON DELETE RESTRICT
 );
 
 CREATE TABLE Tarefa (
@@ -92,7 +95,7 @@ CREATE TABLE Horario_Estudo (
     
     FOREIGN KEY (id_grupo_FK)
         REFERENCES Grupo_Estudo(id_grupo)
-        ON DELETE CASCADE
+        ON DELETE RESTRICT
 );
 
 CREATE TABLE Metas_Estudo (
@@ -151,6 +154,7 @@ CREATE TABLE Participa (
 CREATE VIEW vw_alunos AS
 SELECT
     matricula,
+    nome,
     email,
     curso,
     senha,
@@ -158,3 +162,62 @@ SELECT
     periodo,
     data_nascimento
 FROM Aluno;
+
+DROP TRIGGER IF EXISTS trg_notificacao_novo_aluno;
+
+DELIMITER $$
+
+CREATE TRIGGER trg_notificacao_novo_aluno
+AFTER INSERT ON Aluno
+FOR EACH ROW
+BEGIN
+    INSERT INTO Notificacoes
+    (
+        data,
+        status,
+        descricao,
+        matricula_FK
+    )
+    VALUES
+    (
+        CURDATE(),
+        'Pendente',
+        'Bem-vindo ao Sistema de Estudos Universitário!',
+        NEW.matricula
+    );
+END$$
+
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS sp_cadastrar_material;
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_cadastrar_material(
+    IN p_tipo VARCHAR(50),
+    IN p_link VARCHAR(255),
+    IN p_nome_arquivo VARCHAR(255),
+    IN p_arquivo LONGBLOB,
+    IN p_codigo_FK INTEGER
+)
+BEGIN
+    INSERT INTO Material
+    (
+        tipo,
+        link,
+        nome_arquivo,
+        arquivo,
+        codigo_FK
+    )
+    VALUES
+    (
+        p_tipo,
+        p_link,
+        p_nome_arquivo,
+        p_arquivo,
+        p_codigo_FK
+    );
+END$$
+
+DELIMITER ;
+
