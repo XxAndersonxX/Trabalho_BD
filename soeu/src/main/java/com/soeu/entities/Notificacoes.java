@@ -63,6 +63,8 @@ public class Notificacoes {
 
     @Override
     public String toString() {
-        return "Atividade para dia " + data;
+        return descricao +
+           "\nData: " + data +
+           "\nStatus: " + status;
     }
 }
