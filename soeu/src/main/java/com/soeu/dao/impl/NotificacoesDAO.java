@@ -149,9 +149,11 @@ public class NotificacoesDAO extends AbstractDAO<Notificacoes>{
                 "SELECT Notificacoes.*, Aluno.* " +
                 "FROM Notificacoes " +
                 "INNER JOIN Aluno " +
-                "ON Notificacoes.matricula_FK = Aluno.matricula "
+                "ON Notificacoes.matricula_FK = Aluno.matricula " +
+                "WHERE Notificacoes.matricula_FK = ?"
             );
 
+            ps.setInt(1, id);
             rs = ps.executeQuery();
 
             List<Notificacoes> notificacoes = new ArrayList<>();
