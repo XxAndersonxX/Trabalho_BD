@@ -86,7 +86,7 @@ public class ProvaPanel {
 
             temService.create(prova.getIdProva(), turmaAtual.getIdTurma());
 
-            String status = "não lido";
+            String status = "Lido ";
             String descricao = "Prova de " + turmaAtual.getDisciplina().getNome();
             Notificacoes not = new Notificacoes(data, status, descricao, alunoLogado);
             

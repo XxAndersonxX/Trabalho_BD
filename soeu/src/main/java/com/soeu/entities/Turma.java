@@ -63,7 +63,8 @@ public class Turma {
 
     @Override
     public String toString() {
-        return  "Semestre: " + semestre + " | " +
+        return  "Disciplina: " + disciplina.getNome() + " | " +
+                "Semestre: " + semestre + " | " +
                 "Horario: " + horario;
     }
 }

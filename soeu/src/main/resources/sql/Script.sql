@@ -1,6 +1,6 @@
 CREATE TABLE Disciplina (
     codigo INTEGER AUTO_INCREMENT PRIMARY KEY,
-    nome_disciplina VARCHAR(100),
+    nome VARCHAR(100),
     creditos INTEGER,
     curso VARCHAR(50),
     periodo INTEGER
@@ -8,7 +8,7 @@ CREATE TABLE Disciplina (
 
 CREATE TABLE Professor (
     id_professor INTEGER AUTO_INCREMENT PRIMARY KEY,
-    nome_professor VARCHAR(100),
+    nome VARCHAR(100),
     email VARCHAR(255),
     telefone VARCHAR(20)
 );
@@ -21,7 +21,7 @@ CREATE TABLE Prova (
 
 CREATE TABLE Aluno (
     matricula INTEGER AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100);
+    nome VARCHAR(100),
     email VARCHAR(255),
     curso VARCHAR(50),
     senha VARCHAR(50),

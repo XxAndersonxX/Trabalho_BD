@@ -42,7 +42,7 @@ public class Prova {
 
     @Override
     public String toString() {
-        return  "Peso: " + peso +
+        return  "Peso: " + peso + " | " +
                 "Data: " + data;
     }
 }
