@@ -28,15 +28,15 @@ public class DisciplinaDAO extends AbstractDAO<Disciplina>{
         try {
             ps = conn.prepareStatement(
                 "INSERT INTO Disciplina " +
-                "(creditos, curso, periodo) " +
+                "(nome, creditos, curso, periodo) " +
                 "VALUES " +
-                "(?, ?, ?)",
+                "(?, ?, ?, ?)",
                 Statement.RETURN_GENERATED_KEYS
             );
-
-            ps.setInt(1, disciplina.getCreditos());
-            ps.setString(2, disciplina.getCurso());
-            ps.setInt(3, disciplina.getPeriodo());
+            ps.setString(1, disciplina.getNome());
+            ps.setInt(2, disciplina.getCreditos());
+            ps.setString(3, disciplina.getCurso());
+            ps.setInt(4, disciplina.getPeriodo());
 
             int linhasAfetadas = ps.executeUpdate();
 
@@ -62,14 +62,15 @@ public class DisciplinaDAO extends AbstractDAO<Disciplina>{
         try {
             ps = conn.prepareStatement(
                 "UPDATE Disciplina " + 
-                "SET creditos = ?, curso = ?, periodo = ? " +
+                "SET nome = ?, creditos = ?, curso = ?, periodo = ? " +
                 "WHERE codigo = ?"
             );
-
-            ps.setInt(1, disciplina.getCreditos());
-            ps.setString(2, disciplina.getCurso());
-            ps.setInt(3, disciplina.getPeriodo());
-            ps.setInt(4, disciplina.getCodigo());
+            
+            ps.setString(1, disciplina.getNome());
+            ps.setInt(2, disciplina.getCreditos());
+            ps.setString(3, disciplina.getCurso());
+            ps.setInt(4, disciplina.getPeriodo());
+            ps.setInt(5, disciplina.getCodigo());
 
             ps.executeUpdate();  
         } catch (SQLException e) {

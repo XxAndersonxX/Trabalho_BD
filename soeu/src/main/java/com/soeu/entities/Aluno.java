@@ -3,7 +3,7 @@ package com.soeu.entities;
 import java.time.LocalDate;
 
 public class Aluno {
-
+    private String nome;
     private Integer matricula;
     private String email;
     private String curso;
@@ -15,7 +15,8 @@ public class Aluno {
     public Aluno() {
     }
 
-    public Aluno(String email, String curso, String senha, Double ira, Integer periodo, LocalDate dataNascimento) {
+    public Aluno(String nome ,String email, String curso, String senha, Double ira, Integer periodo, LocalDate dataNascimento) {
+        this.nome = nome;
         this.email = email;
         this.curso = curso;
         this.senha = senha;
@@ -24,6 +25,14 @@ public class Aluno {
         this.dataNascimento = dataNascimento;
     }
 
+    public String getNome() {
+        return nome;
+    }
+ 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
     public Integer getMatricula() {
         return matricula;
     }

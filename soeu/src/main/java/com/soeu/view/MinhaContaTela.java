@@ -91,6 +91,8 @@ public class MinhaContaTela extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
  try {
+        String novoNome = javax.swing.JOptionPane.showInputDialog(this, "Novo nome:", alunoLogado.getNome());
+
         String novoEmail = javax.swing.JOptionPane.showInputDialog(this, "Novo email:", alunoLogado.getEmail());
         String novoCurso = javax.swing.JOptionPane.showInputDialog(this, "Novo curso:", alunoLogado.getCurso());
         String novaSenha = javax.swing.JOptionPane.showInputDialog(this, "Nova senha:", alunoLogado.getSenha());
@@ -98,7 +100,8 @@ public class MinhaContaTela extends javax.swing.JFrame {
         if (novoEmail == null || novoCurso == null || novaSenha == null) {
             return;
         }
-
+        
+        alunoLogado.setNome(novoNome);
         alunoLogado.setEmail(novoEmail);
         alunoLogado.setCurso(novoCurso);
         alunoLogado.setSenha(novaSenha);
@@ -157,6 +160,7 @@ try {
         }
 
         javax.swing.JOptionPane.showMessageDialog(this,
+            "Nome: " + alunoAtualizado.getNome() +
             "Email: " + alunoAtualizado.getEmail() +
             "\nCurso: " + alunoAtualizado.getCurso() +
             "\nIRA: " + alunoAtualizado.getIra() +

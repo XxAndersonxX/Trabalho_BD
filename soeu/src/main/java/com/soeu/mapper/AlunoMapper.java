@@ -8,6 +8,7 @@ import com.soeu.entities.Aluno;
 public class AlunoMapper {
     public static Aluno createAluno(ResultSet rs)throws SQLException {
         Aluno aluno = new Aluno();
+
         aluno.setMatricula(rs.getInt("matricula"));
         aluno.setEmail(rs.getString("email"));
         aluno.setCurso(rs.getString("curso"));
@@ -15,6 +16,7 @@ public class AlunoMapper {
         aluno.setIra(rs.getDouble("ira"));
         aluno.setPeriodo(rs.getInt("periodo"));
         aluno.setDataNascimento(rs.getDate("data_nascimento").toLocalDate());
+        aluno.setNome(rs.getString("nome"));
 
         return aluno;
     }

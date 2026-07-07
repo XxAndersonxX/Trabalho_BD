@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.sql.CallableStatement;
 import com.soeu.dao.interfaces.AbstractDAO;
 import com.soeu.entities.Disciplina;
 import com.soeu.entities.Material;
@@ -22,57 +22,51 @@ public class MaterialDAO extends AbstractDAO<Material>{
         super(conn);
     }
 
-    @Override
-    public void insert(Material material) {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
+@Override
+public void insert(Material material) {
+    CallableStatement cs = null;
 
-        try {
-            ps = conn.prepareStatement(
-                "INSERT INTO material " +
-                "(tipo, link, codigo_FK) " +
-                "VALUES " +
-                "(?, ?, ?)",
-                Statement.RETURN_GENERATED_KEYS
-            );
+    try {
+        cs = conn.prepareCall(
+            "{CALL sp_cadastrar_material(?, ?, ?, ?, ?)}"
+        );
 
-            ps.setString(1, material.getTipo());
-            ps.setString(2, material.getLink());
-            ps.setInt(3, material.getDisciplina().getCodigo());
+        cs.setString(1, material.getTipo());
+        cs.setString(2, material.getLink());
+        cs.setString(3, material.getNomeArquivo());
+        cs.setBytes(4, material.getArquivo());
+        cs.setInt(5, material.getDisciplina().getCodigo());
+        cs.execute();
 
-            int linhasAfetadas = ps.executeUpdate();
-
-            if(linhasAfetadas > 0){
-                rs = ps.getGeneratedKeys();
-
-                if(rs.next()){
-                    int id = rs.getInt(1);
-                    material.setIdMaterial(id);
-                }
-            }
-        } catch (SQLException e) {
-            throw new DbException(e.getMessage());
-        }finally{
-            DB.closeResultSet(rs);
-            DB.closeStatement(ps);
-        }
+    } catch (SQLException e) {
+        throw new DbException(e.getMessage());
+    } finally {
+        DB.closeStatement(cs);
     }
+}
 
     @Override
     public void update(Material material) {
         PreparedStatement ps = null;
 
         try {
-            ps = conn.prepareStatement(
-                "UPDATE Material " + 
-                "SET tipo = ?, link = ?, codigo_FK = ? " +
-                "WHERE id_material = ?"
-            );
+        ps = conn.prepareStatement(
+            "UPDATE Material " +
+            "SET tipo = ?, " +
+            "link = ?, " +
+            "nome_arquivo = ?, " +
+            "arquivo = ?, " +
+            "codigo_FK = ? " +
+            "WHERE id_material = ?"
+);
+            
 
-            ps.setString(1, material.getTipo());
-            ps.setString(2, material.getLink());
-            ps.setInt(3, material.getDisciplina().getCodigo());
-            ps.setInt(4, material.getIdMaterial());
+        ps.setString(1, material.getTipo());
+        ps.setString(2, material.getLink());
+        ps.setString(3, material.getNomeArquivo());
+        ps.setBytes(4, material.getArquivo());
+        ps.setInt(5, material.getDisciplina().getCodigo());
+        ps.setInt(6, material.getIdMaterial());
 
             ps.executeUpdate();  
         } catch (SQLException e) {
@@ -135,38 +129,33 @@ public class MaterialDAO extends AbstractDAO<Material>{
     }
 
     @Override
-    public List<Material> findAllById(Integer id) {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
+    public List<Material> findAllById(Integer codigoDisciplina) {
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
-        try {
-            ps = conn.prepareStatement(
-                "SELECT Material.*, Disciplina.* " +
-                "FROM Material " +
-                "INNER JOIN Disciplina " +
-                "ON Material.codigo_FK = Disciplina.codigo " +
-                "WHERE Disciplina.codigo = ?"
-            );
-            
-            rs = ps.executeQuery();
+    try {
+        ps = conn.prepareStatement(
+            "SELECT * FROM Material WHERE codigo_FK = ?"
+        );
 
-            List<Material> materiais = new ArrayList<>();
-            
-            while(rs.next()){
-                Disciplina disciplina = DisciplinaMapper.createDisciplina(rs);
-                Material material = MaterialMapper.createMaterial(rs);
+        ps.setInt(1, codigoDisciplina);
 
-                material.setDisciplina(disciplina);
+        rs = ps.executeQuery();
 
-                materiais.add(material);
-            }
-            
-            return materiais;
-        } catch (SQLException e) {
-            throw new DbException(e.getMessage());
-        }finally{
-            DB.closeResultSet(rs);
-            DB.closeStatement(ps);
+        List<Material> materiais = new ArrayList<>();
+
+        while (rs.next()) {
+            Material material = MaterialMapper.createMaterial(rs);
+            materiais.add(material);
         }
+
+        return materiais;
+
+    } catch (SQLException e) {
+        throw new DbException(e.getMessage());
+    } finally {
+        DB.closeResultSet(rs);
+        DB.closeStatement(ps);
     }
+}
 }

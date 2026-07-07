@@ -36,8 +36,10 @@ CREATE TABLE Material (
     id_material INTEGER AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(50),
     link VARCHAR(255),
+    nome_arquivo VARCHAR(255),
+    arquivo LONGBLOB,
     codigo_FK INTEGER,
-    
+
     FOREIGN KEY (codigo_FK)
         REFERENCES Disciplina(codigo)
         ON DELETE CASCADE
@@ -146,9 +148,19 @@ CREATE TABLE Participa (
         ON DELETE CASCADE
 );
 
+ALTER TABLE Aluno
+ADD nome VARCHAR(100) NOT NULL;
+
+ALTER TABLE Professor
+ADD nome VARCHAR(100) NOT NULL;
+
+ALTER TABLE Disciplina
+ADD nome VARCHAR(100) NOT NULL;
+
 CREATE VIEW vw_alunos AS
 SELECT
     matricula,
+    nome,
     email,
     curso,
     senha,
@@ -156,3 +168,62 @@ SELECT
     periodo,
     data_nascimento
 FROM Aluno;
+
+DROP TRIGGER IF EXISTS trg_notificacao_novo_aluno;
+
+DELIMITER $$
+
+CREATE TRIGGER trg_notificacao_novo_aluno
+AFTER INSERT ON Aluno
+FOR EACH ROW
+BEGIN
+    INSERT INTO Notificacoes
+    (
+        data,
+        status,
+        descricao,
+        matricula_FK
+    )
+    VALUES
+    (
+        CURDATE(),
+        'Pendente',
+        'Bem-vindo ao Sistema de Estudos Universitário!',
+        NEW.matricula
+    );
+END$$
+
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS sp_cadastrar_material;
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_cadastrar_material(
+    IN p_tipo VARCHAR(50),
+    IN p_link VARCHAR(255),
+    IN p_nome_arquivo VARCHAR(255),
+    IN p_arquivo LONGBLOB,
+    IN p_codigo_FK INTEGER
+)
+BEGIN
+    INSERT INTO Material
+    (
+        tipo,
+        link,
+        nome_arquivo,
+        arquivo,
+        codigo_FK
+    )
+    VALUES
+    (
+        p_tipo,
+        p_link,
+        p_nome_arquivo,
+        p_arquivo,
+        p_codigo_FK
+    );
+END$$
+
+DELIMITER ;
+

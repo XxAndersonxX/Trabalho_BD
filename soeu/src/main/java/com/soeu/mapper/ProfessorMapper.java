@@ -11,6 +11,7 @@ public class ProfessorMapper {
         professor.setIdProfessor(rs.getInt("id_professor"));
         professor.setEmail(rs.getString("email"));
         professor.setTelefone(rs.getString("telefone"));
+        professor.setNome(rs.getString("nome"));
 
         return professor;
     }

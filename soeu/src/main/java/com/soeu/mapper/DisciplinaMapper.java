@@ -12,6 +12,7 @@ public class DisciplinaMapper {
         disciplina.setCreditos(rs.getInt("creditos"));
         disciplina.setCurso(rs.getString("curso"));
         disciplina.setPeriodo(rs.getInt("periodo"));
+        disciplina.setNome(rs.getString("nome"));
 
         return disciplina;
     }

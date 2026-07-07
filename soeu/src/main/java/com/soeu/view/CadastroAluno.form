@@ -31,61 +31,55 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="BtVoltar" min="-2" pref="126" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="BtCadastrar" min="-2" pref="128" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="BtVoltar" min="-2" pref="126" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="BtCadastrar" min="-2" pref="128" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="Lbdatanascimento" min="-2" max="-2" attributes="0"/>
+                              <Component id="Lbdatanascimento" min="-2" pref="114" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="txtDataNascimento" max="32767" attributes="0"/>
                           </Group>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="Lbemail" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Component id="txtEmail" max="32767" attributes="0"/>
+                                      <Component id="Lbira" pref="33" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="titulo" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="Lbperiodo" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtIra" max="32767" attributes="0"/>
+                                  <Component id="txtPeriodo" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Lbcurso" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Lbsenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Lbcurso" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Lbsenha" min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Component id="Lbemail" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="Lbemail1" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtSenha2" max="32767" attributes="0"/>
+                                  <Component id="txtnome" max="32767" attributes="0"/>
+                                  <Component id="txtEmail" max="32767" attributes="0"/>
                                   <Component id="txtCurso" max="32767" attributes="0"/>
+                                  <Component id="txtSenha2" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Lbperiodo" min="-2" max="-2" attributes="0"/>
-                          <Component id="Lbira" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtIra" max="32767" attributes="0"/>
-                          <Component id="txtPeriodo" max="32767" attributes="0"/>
+                          <Component id="titulo" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -94,7 +88,12 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Component id="titulo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="8" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Lbemail1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtnome" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="10" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Lbemail" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -129,7 +128,7 @@
                   <Component id="BtVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BtCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -197,12 +196,25 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCurso">
     </Component>
     <Component class="javax.swing.JTextField" name="txtIra">
     </Component>
     <Component class="javax.swing.JTextField" name="txtPeriodo">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtnome">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtnomeActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Lbemail1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nome:"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

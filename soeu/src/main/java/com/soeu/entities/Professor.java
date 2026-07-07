@@ -1,7 +1,7 @@
 package com.soeu.entities;
 
 public class Professor {
-
+    private String nome;
     private Integer idProfessor;
     private String email;
     private String telefone;
@@ -13,7 +13,15 @@ public class Professor {
         this.email = email;
         this.telefone = telefone;
     }
-
+    
+    public String getNome() {
+        return nome;
+    }
+    
+    public void setNome(String nome) {
+    this.nome = nome;
+    }
+    
     public Integer getIdProfessor() {
         return idProfessor;
     }

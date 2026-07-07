@@ -4,6 +4,7 @@ import com.soeu.dao.impl.AlunoDAO;
 import com.soeu.dao.impl.DisciplinaDAO;
 import com.soeu.dao.impl.GrupoEstudoDAO;
 import com.soeu.dao.impl.HorarioEstudoDAO;
+import com.soeu.dao.impl.MaterialDAO;
 import com.soeu.dao.impl.MatriculaDAO;
 import com.soeu.dao.impl.MetasEstudoDAO;
 import com.soeu.dao.impl.NotificacoesDAO;
@@ -67,4 +68,8 @@ public class DaoFactory {
     public static TemDAO createTemDAO(){
         return new TemDAO(DB.getMySQLConnection());
     }
+    
+    public static MaterialDAO createMaterialDAO() {
+    return new MaterialDAO(DB.getMySQLConnection());
+}
 }

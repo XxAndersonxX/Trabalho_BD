@@ -28,18 +28,19 @@ public class AlunoDAO extends AbstractDAO<Aluno>{
         try {
             ps = conn.prepareStatement(
                 "INSERT INTO Aluno " +
-                "(email, curso, senha, ira, periodo, data_nascimento) " +
+                "(nome, email, curso, senha, ira, periodo, data_nascimento) " +
                 "VALUES " +
-                "(?, ?, ?, ?, ?, ?)",
+                "(?, ?, ?, ?, ?, ?, ?)",
                 Statement.RETURN_GENERATED_KEYS
             );
 
-            ps.setString(1, aluno.getEmail());
-            ps.setString(2, aluno.getCurso());
-            ps.setString(3, aluno.getSenha());
-            ps.setDouble(4, aluno.getIra());
-            ps.setInt(5, aluno.getPeriodo());
-            ps.setDate(6, java.sql.Date.valueOf(aluno.getDataNascimento()));
+            ps.setString(1, aluno.getNome());
+            ps.setString(2, aluno.getEmail());
+            ps.setString(3, aluno.getCurso());
+            ps.setString(4, aluno.getSenha());
+            ps.setDouble(5, aluno.getIra());
+            ps.setInt(6, aluno.getPeriodo());
+            ps.setDate(7, java.sql.Date.valueOf(aluno.getDataNascimento()));
 
             int linhasAfetadas = ps.executeUpdate();
 
@@ -65,17 +66,17 @@ public class AlunoDAO extends AbstractDAO<Aluno>{
         try {
             ps = conn.prepareStatement(
                 "UPDATE Aluno " + 
-                "SET email = ?, curso = ?, senha = ?, ira = ?, periodo = ?, data_nascimento = ? " +
+                "SET nome = ?, email = ?, curso = ?, senha = ?, ira = ?, periodo = ?, data_nascimento = ? " +
                 "WHERE matricula = ?"
             );
-
-            ps.setString(1, aluno.getEmail());
-            ps.setString(2, aluno.getCurso());
-            ps.setString(3, aluno.getSenha());
-            ps.setDouble(4, aluno.getIra());
-            ps.setInt(5, aluno.getPeriodo());
-            ps.setDate(6, java.sql.Date.valueOf(aluno.getDataNascimento()));
-            ps.setInt(7, aluno.getMatricula());
+            ps.setString(1, aluno.getNome());
+            ps.setString(2, aluno.getEmail());
+            ps.setString(3, aluno.getCurso());
+            ps.setString(4, aluno.getSenha());
+            ps.setDouble(5, aluno.getIra());
+            ps.setInt(6, aluno.getPeriodo());
+            ps.setDate(7, java.sql.Date.valueOf(aluno.getDataNascimento()));
+            ps.setInt(8, aluno.getMatricula());
 
             ps.executeUpdate();  
         } catch (SQLException e) {

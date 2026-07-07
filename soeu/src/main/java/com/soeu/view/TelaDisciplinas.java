@@ -34,6 +34,7 @@ public class TelaDisciplinas extends javax.swing.JFrame {
     for (Disciplina disciplina : disciplinas) {
         modelo.addRow(new Object[]{
             disciplina.getCodigo(),
+            disciplina.getNome(),
             disciplina.getCurso(),
             disciplina.getCreditos(),
             disciplina.getPeriodo()
@@ -82,17 +83,18 @@ public class TelaDisciplinas extends javax.swing.JFrame {
 
         tabelaDisciplinas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Código", "Curso", "Créditos", "Período"
+                "Código", "Nome", "Curso", "Créditos", "Período"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -111,9 +113,11 @@ public class TelaDisciplinas extends javax.swing.JFrame {
                 .addGap(133, 133, 133))
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
