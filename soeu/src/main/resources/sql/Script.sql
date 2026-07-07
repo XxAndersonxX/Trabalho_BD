@@ -42,7 +42,7 @@ CREATE TABLE Material (
 
     FOREIGN KEY (codigo_FK)
         REFERENCES Disciplina(codigo)
-        ON DELETE CASCADE
+        ON DELETE RESTRICT
 );
 
 CREATE TABLE Turma (
@@ -54,11 +54,11 @@ CREATE TABLE Turma (
     
     FOREIGN KEY (codigo_FK)
         REFERENCES Disciplina(codigo)
-        ON DELETE CASCADE,
+        ON DELETE RESTRICT,
         
     FOREIGN KEY (id_professor_FK)
         REFERENCES Professor(id_professor)
-        ON DELETE CASCADE
+        ON DELETE RESTRICT
 );
 
 CREATE TABLE Notificacoes (
@@ -70,7 +70,7 @@ CREATE TABLE Notificacoes (
     
     FOREIGN KEY (matricula_FK)
         REFERENCES Aluno(matricula)
-        ON DELETE CASCADE
+        ON DELETE RESTRICT
 );
 
 CREATE TABLE Tarefa (
@@ -92,7 +92,7 @@ CREATE TABLE Horario_Estudo (
     
     FOREIGN KEY (id_grupo_FK)
         REFERENCES Grupo_Estudo(id_grupo)
-        ON DELETE CASCADE
+        ON DELETE RESTRICT
 );
 
 CREATE TABLE Metas_Estudo (

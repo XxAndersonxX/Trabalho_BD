@@ -57,6 +57,7 @@ public class TelaMaterias extends javax.swing.JFrame {
 
         for (Material material : materiais) {
             modelo.addRow(new Object[]{
+                material.getIdMaterial(),
                 material.getTipo(),
                 material.getNomeArquivo(),
                 material.getLink()
@@ -103,7 +104,7 @@ private void carregarDisciplinas() {
         btExcluir = new javax.swing.JButton();
         btSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Materiais");
@@ -114,14 +115,23 @@ private void carregarDisciplinas() {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Tipo", "Nome Arquivo", "Link"
+                "ID", "Tipo", "Nome Arquivo", "Link"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         btVoltar.setText("Voltar");
@@ -254,7 +264,38 @@ private void carregarDisciplinas() {
     this.dispose();    }//GEN-LAST:event_btVoltarActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-        JOptionPane.showMessageDialog(this, "Exclusão de material será implementada depois.");    }//GEN-LAST:event_btExcluirActionPerformed
+    
+    int linhaSelecionada = jTable1.getSelectedRow();
+
+    if (linhaSelecionada == -1) {
+        JOptionPane.showMessageDialog(this, "Selecione um material na tabela.");
+        return;
+    }
+
+    int confirmacao = JOptionPane.showConfirmDialog(
+        this,
+        "Tem certeza que deseja excluir este material?",
+        "Confirmar exclusão",
+        JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirmacao != JOptionPane.YES_OPTION) {
+        return;
+    }
+
+    try {
+        Integer idMaterial = (Integer) jTable1.getValueAt(linhaSelecionada, 0);
+
+        MaterialService materialService = new MaterialService();
+        materialService.delete(idMaterial);
+
+        JOptionPane.showMessageDialog(this, "Material excluído com sucesso!");
+
+        carregarMateriais();
+
+    } catch (RuntimeException e) {
+        JOptionPane.showMessageDialog(this, e.getMessage());
+    }    }//GEN-LAST:event_btExcluirActionPerformed
 
     /**
      * @param args the command line arguments
