@@ -161,7 +161,7 @@ try {
 
         javax.swing.JOptionPane.showMessageDialog(this,
             "Nome: " + alunoAtualizado.getNome() +
-            "Email: " + alunoAtualizado.getEmail() +
+            "\nEmail: " + alunoAtualizado.getEmail() +
             "\nCurso: " + alunoAtualizado.getCurso() +
             "\nIRA: " + alunoAtualizado.getIra() +
             "\nPeríodo: " + alunoAtualizado.getPeriodo() +
