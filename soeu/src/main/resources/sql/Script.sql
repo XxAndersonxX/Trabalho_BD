@@ -78,6 +78,7 @@ CREATE TABLE Notificacoes (
 
 CREATE TABLE Tarefa (
     id_tarefa INTEGER AUTO_INCREMENT PRIMARY KEY,
+    descricao varchar(255),
     prazo DATE,
     status VARCHAR(20),
     matricula_FK INTEGER,

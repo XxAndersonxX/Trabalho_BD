@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class Tarefa {
 
     private Integer idTarefa;
+    private String descricao;
     private LocalDate prazo;
     private String status;
 
@@ -13,7 +14,7 @@ public class Tarefa {
     public Tarefa() {
     }
 
-    public Tarefa(LocalDate prazo, String status, Aluno aluno) {
+    public Tarefa(String descricao, LocalDate prazo, String status, Aluno aluno) {
         this.prazo = prazo;
         this.status = status;
         this.aluno = aluno;
@@ -25,6 +26,14 @@ public class Tarefa {
 
     public void setIdTarefa(Integer idTarefa) {
         this.idTarefa = idTarefa;
+    }
+    
+    public String getDescricao(){
+        return descricao;
+    }
+    
+    public void setDescricao(String descricao){
+        this.descricao = descricao;
     }
 
     public LocalDate getPrazo() {

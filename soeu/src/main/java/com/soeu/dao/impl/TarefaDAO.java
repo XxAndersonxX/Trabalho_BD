@@ -30,15 +30,15 @@ public class TarefaDAO extends AbstractDAO<Tarefa>{
         try {
             ps = conn.prepareStatement(
                 "INSERT INTO Tarefa " +
-                "(prazo, status, matricula_FK) " +
+                "(descricao, prazo, status, matricula_FK) " +
                 "VALUES " +
-                "(?, ?, ?)",
+                "(?, ?, ?, ?)",
                 Statement.RETURN_GENERATED_KEYS
             );
-
-            ps.setDate(1, java.sql.Date.valueOf(tarefa.getPrazo()));
-            ps.setString(2, tarefa.getStatus());
-            ps.setInt(3, tarefa.getAluno().getMatricula());
+            ps.setString(1, tarefa.getDescricao());
+            ps.setDate(2, java.sql.Date.valueOf(tarefa.getPrazo()));
+            ps.setString(3, tarefa.getStatus());
+            ps.setInt(4, tarefa.getAluno().getMatricula());
 
             int linhasAfetadas = ps.executeUpdate();
 
@@ -136,38 +136,40 @@ public class TarefaDAO extends AbstractDAO<Tarefa>{
     }
 
     @Override
-    public List<Tarefa> findAllById(Integer id) {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
+public List<Tarefa> findAllById(Integer id) {
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
-        try {
-            ps = conn.prepareStatement(
-                "SELECT Tarefa.*, Aluno.* " +
-                "FROM Tarefa " +
-                "INNER JOIN Aluno " +
-                "ON Tarefa.matricula_FK = Aluno.matricula " +
-                "WHERE Aluno.matricula = ?"
-            );
-            
-            rs = ps.executeQuery();
+    try {
+        ps = conn.prepareStatement(
+            "SELECT Tarefa.*, Aluno.* " +
+            "FROM Tarefa " +
+            "INNER JOIN Aluno " +
+            "ON Tarefa.matricula_FK = Aluno.matricula " +
+            "WHERE Aluno.matricula = ?"
+        );
 
-            List<Tarefa> tarefas = new ArrayList<>();
-            
-            while(rs.next()){
-                Aluno aluno = AlunoMapper.createAluno(rs);
-                Tarefa tarefa = TarefaMapper.createTarefa(rs);
+        ps.setInt(1, id); // faltava isso
 
-                tarefa.setAluno(aluno);
+        rs = ps.executeQuery();
 
-                tarefas.add(tarefa);
-            }
-            
-            return tarefas;
-        } catch (SQLException e) {
-            throw new DbException(e.getMessage());
-        }finally{
-            DB.closeResultSet(rs);
-            DB.closeStatement(ps);
+        List<Tarefa> tarefas = new ArrayList<>();
+
+        while (rs.next()) {
+            Aluno aluno = AlunoMapper.createAluno(rs);
+            Tarefa tarefa = TarefaMapper.createTarefa(rs);
+
+            tarefa.setAluno(aluno);
+            tarefas.add(tarefa);
         }
-    }   
+
+        return tarefas;
+
+    } catch (SQLException e) {
+        throw new DbException(e.getMessage());
+    } finally {
+        DB.closeResultSet(rs);
+        DB.closeStatement(ps);
+        }
+    }
 }

@@ -93,14 +93,14 @@ VALUES
 INSERT INTO Tarefa
 (prazo,status,matricula_FK)
 VALUES
-('2026-07-18','Pendente',1),
-('2026-07-20','Em andamento',2),
-('2026-07-19','Pendente',3),
-('2026-07-25','Concluída',4),
-('2026-07-21','Pendente',5),
-('2026-07-22','Em andamento',6),
-('2026-07-24','Pendente',7),
-('2026-07-26','Concluída',8);
+('atividade1','2026-07-18','Pendente',1),
+('atividade2','2026-07-20','Em andamento',2),
+('atividade3','2026-07-19','Pendente',3),
+('atividade4','2026-07-25','Concluída',4),
+('atividade5','2026-07-21','Pendente',5),
+('atividade6','2026-07-22','Em andamento',6),
+('atividade7','2026-07-24','Pendente',7),
+('atividade8','2026-07-26','Concluída',8);
 
 INSERT INTO Horario_Estudo
 (hora_inicio,hora_fim,id_grupo_FK)
